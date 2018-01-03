@@ -4,7 +4,3 @@ class Gigasecond
     birth_date + duration
   end
 end
-
-module BookKeeping
-  VERSION = 6
-end

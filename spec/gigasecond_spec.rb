@@ -1,4 +1,4 @@
-rrequire_relative '../lib/gigasecond.rb'
+require_relative '../lib/gigasecond.rb'
 
 describe "#from" do
   it "returns Time.utc(2043, 1, 1, 1, 46, 40) for Time.utc(2011, 4, 25, 0, 0, 0)" do
