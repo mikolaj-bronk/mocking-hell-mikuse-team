@@ -1,4 +1,4 @@
-require_relative '../lib/beer_song.rb'
+require_relative '../lib/gigasecond.rb'
 
 RSpec.describe Bottles do
   let(:bottles) { described_class.new }
