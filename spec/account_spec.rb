@@ -26,25 +26,22 @@ RSpec.describe 'Account' do
       expect(account.firstname).to eq(firstname)
       expect(account.firstname.to_s).to be_a(String).and include(firstname.to_s)
     end
-  end
 
     it 'returns correct lastname' do
       expect(account.lastname).to eq(lastname)
       expect(account.lastname.to_s).to be_a(String).and include(lastname.to_s)
     end
-  end
 
-  it 'returns correct login' do
-    expect(account.login).to eq(login)
-    expect(account.login.to_s).to be_a(String).and include(login.to_s)
-  end
-end
+    it 'returns correct login' do
+      expect(account.login).to eq(login)
+      expect(account.login.to_s).to be_a(String).and include(login.to_s)
+    end
 
-it 'returns correct password' do
-  expect(account.password).to eq(password)
-  expect(account.password.to_s).to be_a(String).and include(password.to_s)
-end
-end
+    it 'returns correct password' do
+      expect(account.password).to eq(password)
+      expect(account.password.to_s).to be_a(String).and include(password.to_s)
+    end
+  end
   context '#to_s' do
     let(:id) { 1 }
     let(:firstname) {double('FirstName', firstname: 'Joseph')}
