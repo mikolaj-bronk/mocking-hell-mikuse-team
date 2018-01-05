@@ -3,7 +3,7 @@
     <img src="https://mmiki26.nstrefa.pl/studia/mikuse.PNG" alt="logo" title="mikuse_logo" align="right" height="60" />
 </a>
 
-# System Bankowy
+# Sport Timer
 
 <table>
   <tr>
