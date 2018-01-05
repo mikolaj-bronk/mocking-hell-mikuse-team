@@ -1,16 +1,14 @@
 class Account
-  attr_accessor :id, :firstname, :lastname, :login, :password
+  attr_accessor :id, :login, :password, :person
 
-  def initialize(id, firstname, lastname, login, password)
+  def initialize(id, login, password, person)
     @id = id
-    @firstname = firstname
-    @lastname = lastname
     @login = login
     @password = password
+    @person = person
   end
 
   def to_s
-    account = "#{login} ; #{firstname} ; #{lastname}"
-    account
+    "#{login} ; #{password} ; #{person}"
   end
 end
