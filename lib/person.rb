@@ -9,7 +9,7 @@ class Person
   end
 
   def to_s
-    person = "#{firstname} #{lastname}, #{country}"
+    person = "#{firstname} #{lastname} #{country}"
     person
   end
 end
