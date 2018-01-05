@@ -43,7 +43,7 @@ RSpec.describe 'Account' do
     let(:login) { double('Login', login: 'jbrzdakal') }
     let(:password) { double('Password', password: 'pass123') }
     let(:person) { double('Person', id: 1, firstname: 'Jozef', lastname: 'Brzdakal', country: 'Poland') }
-    subject(:account) { Account.new id, login, password }
+    subject(:account) { Account.new id, login, password, person }
 
     it 'returns correct output' do
       expect(account.to_s).to be_a(String).and include(login.to_s, password.to_s, person_to_s)
