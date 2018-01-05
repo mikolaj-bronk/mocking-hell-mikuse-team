@@ -46,7 +46,7 @@ RSpec.describe 'Account' do
     subject(:account) { Account.new id, login, password, person }
 
     it 'returns correct output' do
-      expect(account.to_s).to be_a(String).and include(login.to_s, password.to_s, person_to_s)
+      expect(account.to_s).to be_a(String).and include(login.to_s, password.to_s, person.to_s)
     end
   end
 end
