@@ -9,7 +9,6 @@ class Account
   end
 
   def to_s
-    account = "#{login} ; #{person}"
-    account
+    "#{login} ; #{password} ; #{person}"
   end
 end
