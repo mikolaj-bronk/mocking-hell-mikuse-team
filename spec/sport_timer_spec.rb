@@ -1,6 +1,7 @@
 require_relative '../lib/sport_timer.rb'
 require_relative '../lib/person.rb'
 require_relative '../lib/account.rb'
+require_relative '../lib/workout.rb'
 
 RSpec.describe 'SportTimer' do
   subject(:sport_timer) { SportTimer.new }
@@ -136,5 +137,53 @@ RSpec.describe 'SportTimer' do
     it { expect { sport_timer.remove_account(0) }.not_to raise_error }
     it { expect { sport_timer.remove_account(1) }.not_to raise_error }
     it { expect { sport_timer.remove_account(2) }.not_to raise_error }
+  end
+
+  context '#add_workout' do
+    it {
+      date = Date.parse('2018-01-05')
+      distance = 4
+      duration = '00:18:30'
+      expect { sport_timer.add_workout(date, distance, duration) }.not_to raise_error
+    }
+    it {
+      date = Date.parse('2018-01-06')
+      distance = 5
+      duration = '00:25:30'
+      expect { sport_timer.add_workout(date, distance, duration) }.not_to raise_error
+    }
+  end
+
+  context '#edit_workout' do
+    it {
+      id = 0
+      date = Date.parse('2018-01-06')
+      distance = 6
+      duration = '00:25:30'
+      expect { sport_timer.edit_workout(id, date, distance, duration) }.not_to raise_error
+    }
+    it {
+      id = 1
+      date = Date.parse('2018-01-06')
+      expect { sport_timer.edit_workout(id, date, '', '') }.not_to raise_error
+    }
+    it {
+      id = 0
+      expect { sport_timer.edit_workout(id, '', '', '') }.not_to raise_error
+    }
+  end
+
+  context '#show_workout' do
+    it {
+      it { expect { sport_timer.show_workout(0) }.not_to raise_error }
+      it { expect { sport_timer.show_workout(1) }.not_to raise_error }
+    }
+  end
+
+  context '#remove_workout' do
+    it {
+      it { expect { sport_timer.remove_workout(0) }.not_to raise_error }
+      it { expect { sport_timer.remove_workout(1) }.not_to raise_error }
+    }
   end
 end

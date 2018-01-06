@@ -50,9 +50,9 @@ class SportTimer
   end
 
   def add_account(login, password, person)
-    max = @@accounts.size
+    size = @@accounts.size
     id = 0
-    id += 1 while id < max && !@@accounts[id].nil?
+    id += 1 while id < size && !@@accounts[id].nil?
     account = Account.new(id, login, password, person)
     @@accounts.insert(id, account)
     puts "Added new account:
