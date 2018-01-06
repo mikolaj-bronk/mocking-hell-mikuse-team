@@ -1,7 +1,7 @@
 class Workout
   attr_accessor :id, :date, :distance, :duration
 
-  def initalize(id, date, distance, duration)
+  def initialize(id, date, distance, duration)
     @id = id
     @date = date
     @distance = distance
