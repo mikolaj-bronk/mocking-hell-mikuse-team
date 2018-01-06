@@ -18,21 +18,21 @@ RSpec.describe 'SportTimer' do
   context '#edit_person' do
       it {
         country = 'Germany'
-        expect { gym.edit_person(0, '', '', country) }.not_to raise_error
+        expect { sport_timer.edit_person(0, '', '', country) }.not_to raise_error
       }
       it {
         firstname = 'Math'
         lastname = 'Janniston'
-        expect { gym.edit_person(0, firstname, lastname, '') }.not_to raise_error
+        expect { sport_timer.edit_person(0, firstname, lastname, '') }.not_to raise_error
       }
       it {
         firstname = 'Math'
         lastname = 'Janniston'
         country = 'France'
-        expect { gym.edit_person(0, firstname, lastname, country) }.not_to raise_error
+        expect { sport_timer.edit_person(0, firstname, lastname, country) }.not_to raise_error
       }
       it {
-        expect { gym.edit_person(1, '', '', '') }.not_to raise_error
+        expect { sport_timer.edit_person(1, '', '', '') }.not_to raise_error
       }
     end
 
