@@ -1,8 +1,15 @@
+version: "2"
 plugins:
   rubocop:
     enabled: true
-    duplication:
+  eslint:
     enabled: false
+  csslint:
+    enabled: true
+  duplication:
+    enabled: false
+    languages:
+      - ruby
 
 exclude_patterns:
 - spec/**/*
