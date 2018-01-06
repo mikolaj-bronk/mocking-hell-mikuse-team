@@ -1,4 +1,4 @@
-Rspec.describe 'Workout' do
+RSpec.describe 'Workout' do
   context '#new' do
     let(:id) { 1 }
     let(:date) { Date.parse('2018-01-05') }
