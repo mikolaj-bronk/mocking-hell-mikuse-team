@@ -49,14 +49,13 @@ class SportTimer
     end
   end
 
-  def add_account(login, password, firstname, lastname, country)
+  def add_account(login, password, person)
     max = @@accounts.size
     id = 0
     id += 1 while id < max && !@@accounts[id].nil?
-    add_person(firstname, lastname, country)
-    account = Account.new(id, login, password, @@people[id])
+    account = Account.new(id, login, password, person)
     @@accounts.insert(id, account)
-    puts "Added new account on
+    puts "Added new account:
     login - #{@@accounts[id].login},
     password - #{@@accounts[id].password}."
   end
@@ -74,9 +73,8 @@ class SportTimer
     @@accounts[id].password = password if password != ''
   end
 
-  def edit_account(id, login, password, firstname, lastname, country)
+  def edit_account(id, login, password)
     if !@@accounts.at(id).nil?
-      edit_person(id, firstname, lastname, country)
       @@accounts[id].person = @@people[id]
       edit_login_password(id, login, password)
       puts "Updated account on id = #{@@accounts[id].id}."
@@ -87,11 +85,11 @@ class SportTimer
 
   def remove_account(id)
     if !@@accounts.at(id).nil?
-     @@accounts[id] = nil
-     remove_person(id)
-     puts "Removed account on id = #{id}."
-   else
-     puts "Account on id = #{id} does not exist in database."
-   end
+      @@accounts[id] = nil
+      remove_person(id)
+      puts "Removed account on id = #{id}."
+    else
+      puts "Account on id = #{id} does not exist in database."
+    end
   end
 end
