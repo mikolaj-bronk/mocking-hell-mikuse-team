@@ -1,7 +1,8 @@
 class SportTimer
-  attr_accessor :people
+  attr_accessor :people, :accounts
 
   @@people = []
+  @@accounts = []
 
   def add_person(firstname, lastname, country)
     size = @@people.size
@@ -46,5 +47,51 @@ class SportTimer
     else
       puts "Person on id = #{id} does not exist in database."
     end
+  end
+
+  def add_account(login, password, firstname, lastname, country)
+    max = @@accounts.size
+    id = 0
+    id += 1 while id < max && !@@accounts[id].nil?
+    add_person(firstname, lastname, country)
+    account = Account.new(id, login, password, @@people[id])
+    @@accounts.insert(id, account)
+    puts "Added new account on
+    login - #{@@accounts[id].login},
+    password - #{@@accounts[id].password}."
+  end
+
+  def show_account(id)
+    if !@@accounts.at(id).nil?
+      puts "Account on id = #{@@accounts[id].id}: #{@@accounts[id]}"
+    else
+      puts "Account on id = #{id} does not exist in database."
+    end
+  end
+
+  def edit_login_password(id, login, password)
+    @@accounts[id].login = login if login != ''
+    @@accounts[id].password = password if password != ''
+  end
+
+  def edit_account(id, login, password, firstname, lastname, country)
+    if !@@accounts.at(id).nil?
+      edit_person(id, firstname, lastname, country)
+      @@accounts[id].person = @@people[id]
+      edit_login_password(id, login, password)
+      puts "Updated account on id = #{@@accounts[id].id}."
+    else
+      puts "Account on id = #{id} does not exist in database."
+    end
+  end
+
+  def remove_account(id)
+    if !@@accounts.at(id).nil?
+     @@accounts[id] = nil
+     remove_person(id)
+     puts "Removed account on id = #{id}."
+   else
+     puts "Account on id = #{id} does not exist in database."
+   end
   end
 end

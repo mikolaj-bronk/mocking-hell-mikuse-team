@@ -1,5 +1,6 @@
 require_relative '../lib/sport_timer.rb'
 require_relative '../lib/person.rb'
+require_relative '../lib/account.rb'
 
 RSpec.describe 'SportTimer' do
    subject(:sport_timer) { SportTimer.new }
