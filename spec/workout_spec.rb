@@ -5,7 +5,8 @@ RSpec.describe 'Workout' do
     let(:id) { 1 }
     let(:date) { Date.parse('2018-01-05') }
     let(:distance) { 5 }
-    let(:duration) { '18:30' }
+    let(:duration) { '00:18:30' }
+    let(:pace) { '3:42' }
     subject(:workout) { Workout.new id, date, distance, duration }
 
     it 'creates a new workout' do
@@ -33,13 +34,17 @@ RSpec.describe 'Workout' do
     it 'returns correct duration' do
       expect(workout.duration).to eq(duration)
     end
+
+    it 'returns correct calculated pace' do
+      expect(workout.pace).to eq(pace)
+    end
   end
 
   context '#to_s' do
-    subject(:workout) { Workout.new 1, Date.parse('2018-01-05'), 5, '17:30' }
+    subject(:workout) { Workout.new 1, Date.parse('2018-01-05'), 5, '18:30' }
 
     it 'returns correct output' do
-      expect(workout.to_s).to be_a(String).and include('2018-01-05 - 5 km - 17:30')
+      expect(workout.to_s).to be_a(String).and include('2018-01-05 - 5 km - 18:30')
     end
   end
 end
