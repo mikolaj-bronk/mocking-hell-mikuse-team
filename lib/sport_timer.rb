@@ -108,7 +108,7 @@ class SportTimer
   end
 
   def insert_data_edit_workout(id, date, distance, duration)
-    @@workouts[id].date = date if !expression.nil?
+    @@workouts[id].date = date if !date.nil?
     @@workouts[id].distance = distance if distance != ''
     @@workouts[id].duration = duration if duration != ''
   end
