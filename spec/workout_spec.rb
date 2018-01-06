@@ -44,7 +44,7 @@ RSpec.describe 'Workout' do
     subject(:workout) { Workout.new 1, Date.parse('2018-01-05'), 5, '18:30' }
 
     it 'returns correct output' do
-      expect(workout.to_s).to be_a(String).and include('2018-01-05 - 5 km - 18:30')
+      expect(workout.to_s).to be_a(String).and include('2018-01-05 - 5 km - 18:30 - 3:42 min/km')
     end
   end
 end
