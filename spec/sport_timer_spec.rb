@@ -3,9 +3,9 @@ require_relative '../lib/person.rb'
 require_relative '../lib/account.rb'
 
 RSpec.describe 'SportTimer' do
-   subject(:sport_timer) { SportTimer.new }
+  subject(:sport_timer) { SportTimer.new }
 
-   context '#add_person' do
+  context '#add_person' do
     it {
       firstname = 'Jan'
       lastname = 'Bak'
@@ -64,9 +64,9 @@ RSpec.describe 'SportTimer' do
     end
 
   context '#remove_person' do
-      it { expect { sport_timer.remove_person(0) }.not_to raise_error }
-      it { expect { sport_timer.remove_person(1) }.not_to raise_error }
-    end
+    it { expect { sport_timer.remove_person(0) }.not_to raise_error }
+    it { expect { sport_timer.remove_person(1) }.not_to raise_error }
+  end
 
   context '#show_person' do
     it { expect { sport_timer.show_person(0) }.not_to raise_error }
