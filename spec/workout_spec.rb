@@ -1,3 +1,5 @@
+require_relative '../lib/workout.rb'
+
 RSpec.describe 'Workout' do
   context '#new' do
     let(:id) { 1 }
