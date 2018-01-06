@@ -1,8 +1,9 @@
 class SportTimer
-  attr_accessor :people, :accounts
+  attr_accessor :people, :accounts, :workouts
 
   @@people = []
   @@accounts = []
+  @@workouts = []
 
   def add_person(firstname, lastname, country)
     size = @@people.size
@@ -56,13 +57,13 @@ class SportTimer
     account = Account.new(id, login, password, person)
     @@accounts.insert(id, account)
     puts "Added new account:
-    login - #{@@accounts[id].login},
-    password - #{@@accounts[id].password}."
+    login - #{login},
+    password - #{password}."
   end
 
   def show_account(id)
     if !@@accounts.at(id).nil?
-      puts "Account on id = #{@@accounts[id].id}: #{@@accounts[id]}"
+      puts "Account on id = #{id}: #{@@accounts[id]}"
     else
       puts "Account on id = #{id} does not exist in database."
     end
@@ -77,7 +78,7 @@ class SportTimer
     if !@@accounts.at(id).nil?
       @@accounts[id].person = @@people[id]
       edit_login_password(id, login, password)
-      puts "Updated account on id = #{@@accounts[id].id}."
+      puts "Updated account on id = #{id}."
     else
       puts "Account on id = #{id} does not exist in database."
     end
@@ -90,6 +91,54 @@ class SportTimer
       puts "Removed account on id = #{id}."
     else
       puts "Account on id = #{id} does not exist in database."
+    end
+  end
+
+  def add_workout(date, distance, duration)
+    size = @@workouts.size
+    id = 0
+    id += 1 while id < max && !@@workouts[id].nil?
+    workout = Ticket.new(id, date, distance, duration)
+    @@workouts.insert(id, workout)
+    puts "Added new workout:
+    id - #{id} ,
+    date - #{date.to_s},
+    distance - #{distance},
+    duration - #{duration}."
+  end
+
+  def insert_data_edit_workout(id, date, distance, duration)
+    @@workouts[id].date = date if date != nil
+    @@workouts[id].distance = distance if distance != ''
+    @@workouts[id].duration = duration if duration != ''
+  end
+
+  def edit_workout(id, date, distance, duration)
+    if !@@workouts.at(id).nil?
+      insert_data_edit_workout(id, date, distance, duration)
+      puts "Updated workout on id = id}."
+    else
+      puts "Workout on id = #{id} does not exist in database."
+    end
+  end
+
+  def show_workout(id)
+    if !@@workouts.at(id).nil?
+      puts "Workout on id = #{id}:
+      date = #{@@workouts[id].date.to_s} ,
+      distance = #{@@workouts[id].distance} ,
+      duration = #{@@workouts[id].duration}."
+    else
+      puts "Workout on id = #{id} does not exist in database."
+    end
+  end
+
+  def remove_workout(id)
+    if !@@workouts.at(id).nil?
+      @@workouts[id] = nil
+      puts "Removed workout on id = #{id}."
+    else
+      puts "Workout on id = #{id} does not exist in database."
     end
   end
 end
