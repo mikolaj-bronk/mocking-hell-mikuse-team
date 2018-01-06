@@ -102,13 +102,13 @@ class SportTimer
     @@workouts.insert(id, workout)
     puts "Added new workout:
     id - #{id} ,
-    date - #{date.to_s},
+    date - #{date},
     distance - #{distance},
     duration - #{duration}."
   end
 
   def insert_data_edit_workout(id, date, distance, duration)
-    @@workouts[id].date = date if date != nil
+    @@workouts[id].date = date if !expression.nil?
     @@workouts[id].distance = distance if distance != ''
     @@workouts[id].duration = duration if duration != ''
   end
@@ -116,7 +116,7 @@ class SportTimer
   def edit_workout(id, date, distance, duration)
     if !@@workouts.at(id).nil?
       insert_data_edit_workout(id, date, distance, duration)
-      puts "Updated workout on id = id}."
+      puts "Updated workout on id = #{id}."
     else
       puts "Workout on id = #{id} does not exist in database."
     end
@@ -125,7 +125,7 @@ class SportTimer
   def show_workout(id)
     if !@@workouts.at(id).nil?
       puts "Workout on id = #{id}:
-      date = #{@@workouts[id].date.to_s} ,
+      date = #{@@workouts[id].date} ,
       distance = #{@@workouts[id].distance} ,
       duration = #{@@workouts[id].duration}."
     else
