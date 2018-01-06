@@ -98,7 +98,7 @@ class SportTimer
     size = @@workouts.size
     id = 0
     id += 1 while id < size && !@@workouts[id].nil?
-    workout = Ticket.new(id, date, distance, duration)
+    workout = Workout.new(id, date, distance, duration)
     @@workouts.insert(id, workout)
     puts "Added new workout:
     id - #{id} ,
