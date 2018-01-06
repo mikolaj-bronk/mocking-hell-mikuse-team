@@ -15,6 +15,15 @@ RSpec.describe 'SportTimer' do
     }
   end
 
+  context '#insert_data_edit_person' do
+    it {
+      firstname = 'Math'
+      lastname = 'Janniston'
+      country = 'France'
+      expect { sport_timer.insert_data_edit_person(firstname, lastname, country) }.not_to raise_error
+    }
+  end
+
   context '#edit_person' do
       it {
         country = 'Germany'
