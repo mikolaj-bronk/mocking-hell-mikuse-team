@@ -174,16 +174,12 @@ RSpec.describe 'SportTimer' do
   end
 
   context '#show_workout' do
-    it {
-      it { expect { sport_timer.show_workout(0) }.not_to raise_error }
-      it { expect { sport_timer.show_workout(1) }.not_to raise_error }
-    }
+    it { expect { sport_timer.show_workout(0) }.not_to raise_error }
+    it { expect { sport_timer.show_workout(1) }.not_to raise_error }
   end
 
   context '#remove_workout' do
-    it {
-      it { expect { sport_timer.remove_workout(0) }.not_to raise_error }
-      it { expect { sport_timer.remove_workout(1) }.not_to raise_error }
-    }
+    it { expect { sport_timer.remove_workout(0) }.not_to raise_error }
+    it { expect { sport_timer.remove_workout(1) }.not_to raise_error }
   end
 end
