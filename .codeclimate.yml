@@ -1,6 +1,8 @@
 plugins:
   rubocop:
     enabled: true
+    duplication:
+    enabled: false
 
 exclude_patterns:
 - spec/**/*
