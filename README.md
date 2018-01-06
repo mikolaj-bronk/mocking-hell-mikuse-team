@@ -54,6 +54,3 @@ Pobieranie najnowszych zmian z mastera
 
 Po tych komendach macie najnowsze zmiany w lokalnym masterze oraz w swoim branchu
 
-
-
-=======
