@@ -26,15 +26,14 @@ class SportTimer
 
   def edit_person(id, firstname, lastname, country)
     if !@@people.at(id).nil?
-      @@people[id].firstname = firstname if firstname != ''
-      @@people[id].lastname = lastname if lastname != ''
-      @@people[id].country = country if country != ''
+      @@people[id].firstname = firstname
+      @@people[id].lastname = lastname
+      @@people[id].country = country
       puts "Updated person on id = #{@@people[id].id}."
     else
       puts "Person on id = #{id} does not exist in database."
     end
   end
-
 
   def remove_person(id)
     if !@@people.at(id).nil?
