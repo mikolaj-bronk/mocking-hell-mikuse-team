@@ -1,0 +1,2 @@
+class SportTimer
+end
