@@ -56,3 +56,4 @@ Po tych komendach macie najnowsze zmiany w lokalnym masterze oraz w swoim branch
 
 
 
+=======
