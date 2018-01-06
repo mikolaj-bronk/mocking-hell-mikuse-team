@@ -13,6 +13,7 @@ before_script:
   - ./cc-test-reporter before-build
 
 script:
+  - bundle install
   - bundle exec rake
 
 after_script:
