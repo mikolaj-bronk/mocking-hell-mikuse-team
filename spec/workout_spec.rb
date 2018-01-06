@@ -6,7 +6,7 @@ RSpec.describe 'Workout' do
     let(:date) { Date.parse('2018-01-05') }
     let(:distance) { 5 }
     let(:duration) { '00:18:30' }
-    let(:pace) { '3:42' }
+    let(:pace) { '03:42' }
     subject(:workout) { Workout.new id, date, distance, duration }
 
     it 'creates a new workout' do
