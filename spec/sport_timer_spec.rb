@@ -20,7 +20,7 @@ RSpec.describe 'SportTimer' do
       firstname = 'Math'
       lastname = 'Janniston'
       country = 'France'
-      expect { sport_timer.insert_data_edit_person(firstname, lastname, country) }.not_to raise_error
+      expect { sport_timer.insert_data_edit_person(0, firstname, lastname, country) }.not_to raise_error
     }
   end
 
