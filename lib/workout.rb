@@ -18,8 +18,8 @@ class Workout
   end
 
   def calc_pace
-    pace = dur2sec / @distance
-    Time.at(pace).utc.strftime("%M:%S")
+    temp = dur2sec / @distance
+    Time.at(temp).utc.strftime('%M:%S')
   end
 
   def to_s
