@@ -20,18 +20,14 @@ class SportTimer
 
   def show_person(id)
     if !@@people.at(id).nil?
-      puts "Person on id = #{@@people[id].id}: #{@@people[id]}"
-    else
-      puts "Person on id = #{id} does not exist in database."
+      puts "Person on id = #{@@people[id].id}: #{@@people[id]}" 
     end
   end
 
   def edit_person(id, firstname, lastname, country)
     if !@@people.at(id).nil?
       insert_data_edit_person(id, firstname, lastname, country)
-      puts "Updated person on id = #{@@people[id].id}."
-    else
-      puts "Person on id = #{id} does not exist in database."
+      puts "Updated person on id = #{@@people[id].id}."   
     end
   end
 
@@ -45,8 +41,6 @@ class SportTimer
     if !@@people.at(id).nil?
       @@people[id] = nil
       puts "Removed person on id = #{id}."
-    else
-      puts "Person on id = #{id} does not exist in database."
     end
   end
 
@@ -64,9 +58,7 @@ class SportTimer
   def show_account(id)
     if !@@accounts.at(id).nil?
       puts "Account on id = #{id}: #{@@accounts[id]}"
-    else
-      puts "Account on id = #{id} does not exist in database."
-    end
+      end
   end
 
   def edit_login_password(id, login, password)
@@ -79,8 +71,6 @@ class SportTimer
       @@accounts[id].person = @@people[id]
       edit_login_password(id, login, password)
       puts "Updated account on id = #{id}."
-    else
-      puts "Account on id = #{id} does not exist in database."
     end
   end
 
@@ -89,8 +79,6 @@ class SportTimer
       @@accounts[id] = nil
       remove_person(id)
       puts "Removed account on id = #{id}."
-    else
-      puts "Account on id = #{id} does not exist in database."
     end
   end
 
@@ -117,8 +105,6 @@ class SportTimer
     if !@@workouts.at(id).nil?
       insert_data_edit_workout(id, date, distance, duration)
       puts "Updated workout on id = #{id}."
-    else
-      puts "Workout on id = #{id} does not exist in database."
     end
   end
 
@@ -128,8 +114,6 @@ class SportTimer
       date = #{@@workouts[id].date} ,
       distance = #{@@workouts[id].distance} ,
       duration = #{@@workouts[id].duration}."
-    else
-      puts "Workout on id = #{id} does not exist in database."
     end
   end
 
@@ -137,8 +121,6 @@ class SportTimer
     if !@@workouts.at(id).nil?
       @@workouts[id] = nil
       puts "Removed workout on id = #{id}."
-    else
-      puts "Workout on id = #{id} does not exist in database."
     end
   end
 end
