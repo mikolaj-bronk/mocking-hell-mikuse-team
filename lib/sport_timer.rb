@@ -12,10 +12,10 @@ class SportTimer
     person = Person.new(id, firstname, lastname, country)
     @@people.insert(id, person)
     puts "Added new person to database:
-    id- #{@@people[id].id} ,
-    firstname- #{@@people[id].firstname} ,
-    lastname- #{@@people[id].lastname} ,
-    country- #{@@people[id].country}."
+    id - #{@@people[id].id},
+    firstname - #{@@people[id].firstname},
+    lastname - #{@@people[id].lastname},
+    country - #{@@people[id].country}."
   end
 
   def show_person(id)
