@@ -16,7 +16,19 @@ class Program
     logo
     loop do
       menu
-      switch_menu
+      input = gets.chomp
+      case input
+      when '1'
+        user_menu
+      when '2'
+        activity_menu
+      when '3'
+        authors
+      when '4'
+        exit
+      else
+        command_not_found
+      end
       puts ' '
       puts ' '
 
@@ -25,38 +37,9 @@ class Program
     end
   end
 
-  def switch_menu
-    input = gets.chomp
-    case input
-    when '1'
-      users_submenu
-      case gets.chomp
-      when '1'
-        puts 'Wprowadz ID uzytkownika:'
-        id = gets.chomp
-        @program.show_account(id.to_i)
-        next_step
-      when '2'
-        puts 'Wprowadz ID uzytkownika do edycji:'
-        id = gets.chomp
-        puts 'Podaj login:'
-        login = gets.chomp
-        puts 'Podaj haslo:'
-        password = gets.chomp
-        @program.edit_account(id, login, password)
-        next_step
-      when '3'
-        puts 'Wprowadz ID uzytkownika do usuniecia:'
-        id = gets.chomp
-        @program.remove_account(id.to_i)
-        next_step
-      else
-        command_not_found
-        gets.chomp
-      end
-    when '2'
-      activity_submenu
-      case gets.chomp
+  def activity_menu
+    activity_submenu
+    case gets.chomp
       when '1'
         puts 'Wprowadz ID treningu:'
         id = gets.chomp
@@ -84,13 +67,36 @@ class Program
         gets.chomp
       else
         command_not_found
-      end
-    when '3'
-      authors
-    when '4'
-      exit
-    else
-      command_not_found
+    end
+  end
+
+  def user_menu
+    users_submenu
+    case gets.chomp
+      when '1'
+        puts 'Wprowadz ID uzytkownika:'
+        id = gets.chomp
+        @program.show_account(id.to_i)
+        next_step
+        gets.chomp
+      when '2'
+        puts 'Wprowadz ID uzytkownika do edycji:'
+        id = gets.chomp
+        puts 'Podaj login:'
+        login = gets.chomp
+        puts 'Podaj haslo:'
+        password = gets.chomp
+        @program.edit_account(id, login, password)
+        next_step
+        gets.chomp
+      when '3'
+        puts 'Wprowadz ID uzytkownika do usuniecia:'
+        id = gets.chomp
+        @program.remove_account(id.to_i)
+        next_step
+        gets.chomp
+      else
+        command_not_found
     end
   end
 
