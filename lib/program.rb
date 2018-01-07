@@ -12,42 +12,45 @@ class Program
   def initialize
     @program = SportTimer.new
     start
-
     logo
+    menu_action
+  end
+
+  def menu_action
     loop do
       menu
       input = gets.chomp
       case input
-      when '1'
-        users_submenu
-        case gets.chomp
         when '1'
-          show_user_action
+          users_submenu
+          case gets.chomp
+            when '1'
+              show_user_action
+            when '2'
+              edit_user_action
+            when '3'
+              remove_user_action
+            else
+              command_not_found
+          end
         when '2'
-          edit_user_action
+          activity_submenu
+          case gets.chomp
+            when '1'
+              show_workout_action
+            when '2'
+              edit_workout_action
+            when '3'
+              remove_workout_action
+            else
+              command_not_found
+          end
         when '3'
-          remove_user_action
+          authors
+        when '4'
+          exit
         else
           command_not_found
-        end
-      when '2'
-        activity_submenu
-        case gets.chomp
-        when '1'
-          show_workout_action
-        when '2'
-          edit_workout_action
-        when '3'
-          remove_workout_action
-        else
-          command_not_found
-        end
-      when '3'
-        authors
-      when '4'
-        exit
-      else
-        command_not_found
       end
       puts ' '
       puts ' '
