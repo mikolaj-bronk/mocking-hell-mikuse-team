@@ -33,6 +33,10 @@
 `git clone git@github.com:my-rspec/mocking-hell-mikuse-team.git`
 
 ## Praca na branchach
+Pobranie najnowszych zmian z danego brancha:
+
+`git pull origin <imie>`
+
 Utworzenie nowego brancha z githuba: 
 
 `git checkout -b <imie> origin/<imie>`
@@ -40,4 +44,13 @@ Utworzenie nowego brancha z githuba:
 Następnie przy wysłaniu kodu na serwer:
 
 `git push -u origin <imie>`
+
+Pobieranie najnowszych zmian z mastera
+
+* `git checkout master`
+* `git pull origin master`
+* `git checkout <imie>`
+* `git merge master`
+
+Po tych komendach macie najnowsze zmiany w lokalnym masterze oraz w swoim branchu
 
