@@ -64,7 +64,7 @@ RSpec.describe 'SportTimer' do
       }
      it {
         id = 5
-        expect { sport_timer.edit_person(id, '', '', '') }.not_to raise_error
+        expect { sport_timer.edit_person(id, '', '', '') }.to raise_error(PersonNotFoundError)
       }
 
     end
@@ -72,13 +72,13 @@ RSpec.describe 'SportTimer' do
   context '#show_person' do
     it { expect { sport_timer.show_person(0) }.not_to raise_error }
     it { expect { sport_timer.show_person(1) }.not_to raise_error }
-    it { expect { sport_timer.show_person(5) }.not_to raise_error }
+    it { expect { sport_timer.show_person(5) }.to raise_error(PersonNotFoundError) }
   end
 
   context '#remove_person' do
     it { expect { sport_timer.remove_person(0) }.not_to raise_error }
     it { expect { sport_timer.remove_person(1) }.not_to raise_error }
-    it { expect { sport_timer.remove_person(5) }.not_to raise_error }
+    it { expect { sport_timer.remove_person(5) }.to raise_error(PersonNotFoundError)r }
   end
 
 
@@ -116,7 +116,7 @@ RSpec.describe 'SportTimer' do
     it { expect { sport_timer.show_account(0) }.not_to raise_error }
     it { expect { sport_timer.show_account(1) }.not_to raise_error }
     it { expect { sport_timer.show_account(2) }.not_to raise_error }
-    it { expect { sport_timer.show_account(5) }.not_to raise_error }
+    it { expect { sport_timer.show_account(5) }.to raise_error(AccountNotFoundError) }
   end
 
   context '#edit_account' do
@@ -142,7 +142,7 @@ RSpec.describe 'SportTimer' do
     }
     it {
       id = 5
-      expect { sport_timer.edit_account(id, '', '',) }.not_to raise_error
+      expect { sport_timer.edit_account(id, '', '',) }.to raise_error(AccountNotFoundError)
     }
   end
 
@@ -187,19 +187,19 @@ RSpec.describe 'SportTimer' do
     }
     it {
       id = 5
-      expect { sport_timer.edit_workout(id, '', '', '') }.not_to raise_error
+      expect { sport_timer.edit_workout(id, '', '', '') }.to raise_error(WorkoutNotFoundError)
     }
   end
 
   context '#show_workout' do
     it { expect { sport_timer.show_workout(0) }.not_to raise_error }
     it { expect { sport_timer.show_workout(1) }.not_to raise_error }
-    it { expect { sport_timer.show_workout(5) }.not_to raise_error }
+    it { expect { sport_timer.show_workout(5) }.to raise_error(WorkoutNotFoundError) }
   end
 
   context '#remove_workout' do
     it { expect { sport_timer.remove_workout(0) }.not_to raise_error }
     it { expect { sport_timer.remove_workout(1) }.not_to raise_error }
-    it { expect { sport_timer.remove_workout(5) }.not_to raise_error }
+    it { expect { sport_timer.remove_workout(5) }.to raise_error(WorkoutNotFoundError) }
   end
 end

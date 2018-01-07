@@ -90,7 +90,8 @@ class SportTimer
       remove_person(id)
       puts "Removed account on id = #{id}."
     else
-      raise AccountNotFoundError
+      puts ""
+      #raise AccountNotFoundError
     end
   end
 
