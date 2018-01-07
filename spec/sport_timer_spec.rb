@@ -61,7 +61,8 @@ RSpec.describe 'SportTimer' do
       it {
         id = 0
         expect { sport_timer.edit_person(id, '', '', '') }.not_to raise_error
-      }
+      }       
+      
     end
 
   context '#remove_person' do
@@ -69,16 +70,10 @@ RSpec.describe 'SportTimer' do
     it { expect { sport_timer.remove_person(1) }.not_to raise_error }
   end
 
-  context '#show_person' do
-    it { 
-    login = 'test'
-    password = 'pass123'
-    firstname = 'Andrew'
-    lastname = 'Borek'
-    country = 'Spain'
-    person = double('Person',id:0, firstname: firstname, lastname: lastname, country: country)
-    expect { sport_timer.show_person(0) }.not_to raise_error }
+  context '#show_person' do   
+    it { expect { sport_timer.show_person(0) }.not_to raise_error }
     it { expect { sport_timer.show_person(1) }.not_to raise_error }
+    it { expect { sport_timer.edit_person(5) }.to raise_error }
   end
 
   context '#add_account' do
