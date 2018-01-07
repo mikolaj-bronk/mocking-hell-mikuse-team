@@ -147,9 +147,9 @@ RSpec.describe 'SportTimer' do
   end
 
   context '#remove_account' do
-    it { expect { sport_timer.remove_account(0) }.not_to raise_error }
-    it { expect { sport_timer.remove_account(1) }.not_to raise_error }
-    it { expect { sport_timer.remove_account(2) }.not_to raise_error }
+    it { expect { sport_timer.remove_account(0) }.to raise_error(PersonNotFoundError) }
+    it { expect { sport_timer.remove_account(1) }.to raise_error(PersonNotFoundError) }
+    it { expect { sport_timer.remove_account(2) }.to raise_error(PersonNotFoundError) }
     it { expect { sport_timer.remove_account(5) }.not_to raise_error }
   end
 
