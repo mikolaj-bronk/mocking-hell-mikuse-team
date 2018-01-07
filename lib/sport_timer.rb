@@ -22,7 +22,7 @@ class SportTimer
     if !@@people.at(id).nil?
       puts "Person on id = #{@@people[id].id}: #{@@people[id]}"
     else
-      puts "Person on id = #{id} does not exist in database."
+      raise PersonNotFoundError
     end
   end
 
@@ -31,7 +31,7 @@ class SportTimer
       insert_data_edit_person(id, firstname, lastname, country)
       puts "Updated person on id = #{@@people[id].id}."
     else
-      puts "Person on id = #{id} does not exist in database."
+      raise PersonNotFoundError
     end
   end
 
@@ -46,7 +46,7 @@ class SportTimer
       @@people[id] = nil
       puts "Removed person on id = #{id}."
     else
-      puts "Person on id = #{id} does not exist in database."
+      raise PersonNotFoundError
     end
   end
 
@@ -65,7 +65,7 @@ class SportTimer
     if !@@accounts.at(id).nil?
       puts "Account on id = #{id}: #{@@accounts[id]}"
     else
-      puts "Account on id = #{id} does not exist in database."
+      raise AccountNotFoundError
     end
   end
 
@@ -80,7 +80,7 @@ class SportTimer
       edit_login_password(id, login, password)
       puts "Updated account on id = #{id}."
     else
-      puts "Account on id = #{id} does not exist in database."
+      raise AccountNotFoundError
     end
   end
 
@@ -90,7 +90,7 @@ class SportTimer
       remove_person(id)
       puts "Removed account on id = #{id}."
     else
-      puts "Account on id = #{id} does not exist in database."
+      raise AccountNotFoundError
     end
   end
 
@@ -118,7 +118,7 @@ class SportTimer
       insert_data_edit_workout(id, date, distance, duration)
       puts "Updated workout on id = #{id}."
     else
-      puts "Workout on id = #{id} does not exist in database."
+      raise WorkoutNotFoundError
     end
   end
 
@@ -129,7 +129,7 @@ class SportTimer
       distance = #{@@workouts[id].distance} ,
       duration = #{@@workouts[id].duration}."
     else
-      puts "Workout on id = #{id} does not exist in database."
+      raise WorkoutNotFoundError
     end
   end
 
@@ -138,7 +138,25 @@ class SportTimer
       @@workouts[id] = nil
       puts "Removed workout on id = #{id}."
     else
-      puts "Workout on id = #{id} does not exist in database."
+      raise WorkoutNotFoundError
     end
+  end
+end
+
+class PersonNotFoundError < StandardError
+  def initialize(msg = 'Person not found in database')
+    super
+  end
+end
+
+class AccountNotFoundError < StandardError
+  def initialize(msg = 'Account not found in database')
+    super
+  end
+end
+
+class WorkoutNotFoundError < StandardError
+  def initialize(msg = 'Workout not found in database')
+    super
   end
 end
