@@ -19,9 +19,29 @@ class Program
       input = gets.chomp
       case input
       when '1'
-        user_menu
+        users_submenu
+        case gets.chomp
+        when '1'
+          show_user_action
+        when '2'
+          edit_user_action
+        when '3'
+          remove_user_action
+        else
+          command_not_found
+        end
       when '2'
-        activity_menu
+        activity_submenu
+        case gets.chomp
+        when '1'
+          show_workout_action
+        when '2'
+          edit_workout_action
+        when '3'
+          remove_workout_action
+        else
+          command_not_found
+        end
       when '3'
         authors
       when '4'
@@ -37,67 +57,63 @@ class Program
     end
   end
 
-  def activity_menu
-    activity_submenu
-    case gets.chomp
-      when '1'
-        puts 'Wprowadz ID treningu:'
-        id = gets.chomp
-        @program.show_workout(id.to_i)
-        next_step
-        gets.chomp
-      when '2'
-        puts 'Wprowadz ID treningu do edycji:'
-        id = gets.chomp
-        puts 'Podaj date:'
-        date = gets.chomp
-        puts 'Podaj dystans:'
-        distance = gets.chomp
-        puts 'Podaj dystans:'
-        duration = gets.chomp
-        puts 'Podaj czas trwania:'
-        @program.edit_workout(id, date, distance, duration)
-        next_step
-        gets.chomp
-      when '3'
-        puts 'Wprowadz ID treningu do usuniecia:'
-        id = gets.chomp
-        @program.remove_account(id.to_i)
-        next_step
-        gets.chomp
-      else
-        command_not_found
-    end
+  def remove_workout_action
+    puts 'Wprowadz ID treningu do usuniecia:'
+    id = gets.chomp
+    @program.remove_account(id.to_i)
+    next_step
+    gets.chomp
   end
 
-  def user_menu
-    users_submenu
-    case gets.chomp
-      when '1'
-        puts 'Wprowadz ID uzytkownika:'
-        id = gets.chomp
-        @program.show_account(id.to_i)
-        next_step
-        gets.chomp
-      when '2'
-        puts 'Wprowadz ID uzytkownika do edycji:'
-        id = gets.chomp
-        puts 'Podaj login:'
-        login = gets.chomp
-        puts 'Podaj haslo:'
-        password = gets.chomp
-        @program.edit_account(id, login, password)
-        next_step
-        gets.chomp
-      when '3'
-        puts 'Wprowadz ID uzytkownika do usuniecia:'
-        id = gets.chomp
-        @program.remove_account(id.to_i)
-        next_step
-        gets.chomp
-      else
-        command_not_found
-    end
+  def edit_workout_action
+    puts 'Wprowadz ID treningu do edycji:'
+    id = gets.chomp
+    puts 'Podaj date:'
+    date = gets.chomp
+    puts 'Podaj dystans:'
+    distance = gets.chomp
+    puts 'Podaj dystans:'
+    duration = gets.chomp
+    puts 'Podaj czas trwania:'
+    @program.edit_workout(id, date, distance, duration)
+    next_step
+    gets.chomp
+  end
+
+  def show_workout_action
+    puts 'Wprowadz ID treningu:'
+    id = gets.chomp
+    @program.show_workout(id.to_i)
+    next_step
+    gets.chomp
+  end
+
+  def remove_user_action
+    puts 'Wprowadz ID uzytkownika do usuniecia:'
+    id = gets.chomp
+    @program.remove_account(id.to_i)
+    next_step
+    gets.chomp
+  end
+
+  def edit_user_action
+    puts 'Wprowadz ID uzytkownika do edycji:'
+    id = gets.chomp
+    puts 'Podaj login:'
+    login = gets.chomp
+    puts 'Podaj haslo:'
+    password = gets.chomp
+    @program.edit_account(id, login, password)
+    next_step
+    gets.chomp
+  end
+
+  def show_user_action
+    puts 'Wprowadz ID uzytkownika:'
+    id = gets.chomp
+    @program.show_account(id.to_i)
+    next_step
+    gets.chomp
   end
 
   def command_not_found
