@@ -78,7 +78,7 @@ RSpec.describe 'SportTimer' do
   context '#remove_person' do
     it { expect { sport_timer.remove_person(0) }.not_to raise_error }
     it { expect { sport_timer.remove_person(1) }.not_to raise_error }
-    it { expect { sport_timer.remove_person(5) }.to raise_error(PersonNotFoundError)r }
+    it { expect { sport_timer.remove_person(5) }.to raise_error(PersonNotFoundError) }
   end
 
 
