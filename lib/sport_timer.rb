@@ -30,8 +30,9 @@ class SportTimer
     if !@@people.at(id).nil?
       insert_data_edit_person(id, firstname, lastname, country)
       puts "Updated person on id = #{@@people[id].id}."
+      true
     else
-      raise IndexError
+      puts "Person on id = #{id} does not exist in database."
     end
   end
 
