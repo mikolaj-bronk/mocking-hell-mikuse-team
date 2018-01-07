@@ -18,18 +18,18 @@ class Program
       menu
       input = gets.chomp
       case input
-        when '1'
-          puts 'Uzytkownicy'
-        when '2'
-          puts 'Aktywnosc'
-        when '3'
-          puts 'Szczegoly zawodnika'
-        when '4'
-          authors
-        when '5'
-          exit
-        else
-          puts 'Nie rozpoznano komendy!'
+      when '1'
+        puts 'Uzytkownicy'
+      when '2'
+        puts 'Aktywnosc'
+      when '3'
+        puts 'Szczegoly zawodnika'
+      when '4'
+        authors
+      when '5'
+        exit
+      else
+        puts 'Nie rozpoznano komendy!'
       end
 
       puts ' '
