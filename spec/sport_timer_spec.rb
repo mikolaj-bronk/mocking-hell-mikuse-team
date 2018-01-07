@@ -61,7 +61,8 @@ RSpec.describe 'SportTimer' do
       it {
         id = 0
         expect { sport_timer.edit_person(id, '', '', '') }.not_to raise_error
-      }       
+      }  
+      it { expect { sport_timer.edit_person(5) }.to raise_error }     
       
     end
 
@@ -73,7 +74,6 @@ RSpec.describe 'SportTimer' do
   context '#show_person' do   
     it { expect { sport_timer.show_person(0) }.not_to raise_error }
     it { expect { sport_timer.show_person(1) }.not_to raise_error }
-    it { expect { sport_timer.edit_person(5) }.to raise_error }
   end
 
   context '#add_account' do
