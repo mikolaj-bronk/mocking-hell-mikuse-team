@@ -31,7 +31,11 @@ class SportTimer
       insert_data_edit_person(id, firstname, lastname, country)
       puts "Updated person on id = #{@@people[id].id}."
     else
-      puts "Person on id = #{id} does not exist in database."
+      begin
+        raise IndexError
+      rescue IndexError
+        puts "Person on id = #{id} does not exist in database."
+      end
     end
   end
 
