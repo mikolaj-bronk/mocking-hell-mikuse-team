@@ -19,25 +19,93 @@ class Program
       input = gets.chomp
       case input
       when '1'
-        puts 'Uzytkownicy'
+        users_submenu
+        case gets.chomp
+        when '1'
+          puts 'Wprowadz ID uzytkownika:'
+          id = gets.chomp
+          @program.show_account(id.to_i)
+          next_step
+          gets.chomp
+        when '2'
+          puts 'Wprowadz ID uzytkownika do edycji:'
+          id = gets.chomp
+          puts 'Podaj login:'
+          login = gets.chomp
+          puts 'Podaj haslo:'
+          password = gets.chomp
+          @program.edit_account(id, login, password)
+          next_step
+          gets.chomp
+        when '3'
+          puts 'Wprowadz ID uzytkownika do usuniecia: '
+          id = gets.chomp
+          @program.remove_account(id.to_i)
+          next_step
+          gets.chomp
+        else
+          command_not_found
+        end
       when '2'
-        puts 'Aktywnosc'
+        activity_submenu
+        case gets.chomp
+        when '1'
+          puts 'Wprowadz ID treningu: '
+          id = gets.chomp
+          @program.show_workout(id.to_i)
+          next_step
+          gets.chomp
+        when '2'
+          puts 'Wprowadz ID treningu do edycji:'
+          id = gets.chomp
+          puts 'Podaj date:'
+          date = gets.chomp
+          puts 'Podaj dystans:'
+          distance = gets.chomp
+          puts 'Podaj dystans:'
+          duration = gets.chomp
+          puts 'Podaj czas trwania:'
+          @program.edit_workout(id, date, distance, duration)
+          next_step
+          gets.chomp
+        when '3'
+          puts 'Wprowadz ID treningu do usuniecia: '
+          id = gets.chomp
+          @program.remove_account(id.to_i)
+          next_step
+          gets.chomp
+        else
+          command_not_found
+        end
       when '3'
-        puts 'Szczegoly zawodnika'
-      when '4'
         authors
-      when '5'
+      when '4'
         exit
       else
-        puts 'Nie rozpoznano komendy!'
+        command_not_found
       end
-
       puts ' '
       puts ' '
 
       next_step
       break if input.chomp == '6'
     end
+  end
+
+  def command_not_found
+    puts 'Nie rozpoznano komendy'
+  end
+
+  def users_submenu
+    puts '    1 -> Pokaz szczegoly'
+    puts '    2 -> Edytuj uzytkownika'
+    puts '    3 -> Usun osobe'
+  end
+
+  def activity_submenu
+    puts '    1 -> Pokaz szczegoly'
+    puts '    2 -> Edytuj trening'
+    puts '    3 -> Usun trening'
   end
 
   def next_step
@@ -61,7 +129,7 @@ class Program
     puts "|   /\_        /`      /\                        |"
     puts "| /' /_``--.__/\  `,. /  \                       |"
     puts "||_/`  `-._     `\/  `\   `.                     |"
-    puts "|      `-.__/'     `\   |                       |"
+    puts "|      `-.__/'     `    \   |                   |"
     puts "|                        `\  \                   |"
     puts "|                          `\ \                  |"
     puts "|                            \_\__               |"
@@ -72,11 +140,10 @@ class Program
 
   def menu
     puts '---   Menu   ---'
-    puts '1 -> Uzytkownicy '
+    puts '1 -> Uzytkownicy'
     puts '2 -> Aktywnosc'
-    puts '3 -> Szczegoly zawodnika'
-    puts '4 -> Autorzy'
-    puts '5 -> Koniec'
+    puts '3 -> Autorzy'
+    puts '4 -> Koniec'
   end
 
   def authors
