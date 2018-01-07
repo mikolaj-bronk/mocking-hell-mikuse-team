@@ -70,7 +70,14 @@ RSpec.describe 'SportTimer' do
   end
 
   context '#show_person' do
-    it { expect { sport_timer.show_person(0) }.not_to raise_error }
+    it { 
+    login = 'test'
+    password = 'pass123'
+    firstname = 'Andrew'
+    lastname = 'Borek'
+    country = 'Spain'
+    person = double('Person',id:0, firstname: firstname, lastname: lastname, country: country)
+    expect { sport_timer.show_person(0) }.not_to raise_error }
     it { expect { sport_timer.show_person(1) }.not_to raise_error }
   end
 
