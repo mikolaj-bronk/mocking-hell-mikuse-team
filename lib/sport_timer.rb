@@ -30,7 +30,6 @@ class SportTimer
     if !@@people.at(id).nil?
       insert_data_edit_person(id, firstname, lastname, country)
       puts "Updated person on id = #{@@people[id].id}."
-      true
     else
       puts "Person on id = #{id} does not exist in database."
     end
@@ -80,6 +79,7 @@ class SportTimer
       @@accounts[id].person = @@people[id]
       edit_login_password(id, login, password)
       puts "Updated account on id = #{id}."
+      true
     else
       puts "Account on id = #{id} does not exist in database."
     end
