@@ -1,7 +1,7 @@
 require_relative '../lib/workout.rb'
 
 RSpec.describe 'Workout' do
-  context '#new' do
+  describe '#new' do
     let(:id) { 1 }
     let(:date) { Date.parse('2018-01-05') }
     let(:distance) { 5 }
@@ -40,7 +40,7 @@ RSpec.describe 'Workout' do
     end
   end
 
-  context '#to_s' do
+  describe '#to_s' do
     subject(:workout) { Workout.new 1, Date.parse('2018-01-05'), 5, '00:18:30' }
 
     it 'returns correct output' do
