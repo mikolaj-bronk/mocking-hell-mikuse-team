@@ -125,8 +125,8 @@ class SportTimer
   def show_workout(id)
     if !@@workouts.at(id).nil?
       puts "Workout on id = #{id}:
-      date = #{@@workouts[id].date} ,
-      distance = #{@@workouts[id].distance} ,
+      date = #{@@workouts[id].date}
+      distance = #{@@workouts[id].distance}
       duration = #{@@workouts[id].duration}."
     else
       puts "Workout on id = #{id} does not exist in database."
