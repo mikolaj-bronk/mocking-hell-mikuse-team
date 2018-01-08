@@ -41,36 +41,6 @@ RSpec.describe 'SportTimer' do
   end
 
   context '#edit_person' do
-<<<<<<< HEAD
-      it {
-        id = 0
-        country = 'Germany'
-        expect { sport_timer.edit_person(id, '', '', country) }.not_to raise_error
-      }
-      it {
-        id = 0
-        firstname = 'Math'
-        lastname = 'Janniston'
-        expect { sport_timer.edit_person(id, firstname, lastname, '') }.not_to raise_error
-      }
-      it {
-        id = 1
-        firstname = 'Math'
-        lastname = 'Janniston'
-        country = 'France'
-        expect { sport_timer.edit_person(id, firstname, lastname, country) }.not_to raise_error
-      }
-      it {
-        id = 0
-        expect { sport_timer.edit_person(id, '', '', '') }.not_to raise_error
-      }
-     it {
-        id = 5
-        expect { sport_timer.edit_person(id, '', '', '') }.to raise_error(PersonNotFoundError)
-      }
-
-    end
-=======
     it {
       id = 0
       country = 'Germany'
@@ -95,10 +65,9 @@ RSpec.describe 'SportTimer' do
     }
     it {
       id = 5
-      expect { sport_timer.edit_person(id, '', '', '') }.not_to raise_error
+      expect { sport_timer.edit_person(id, '', '', '') }.to raise_error(PersonNotFoundError)
     }
   end
->>>>>>> 09169c9a03841c37f216e6871d044ceb6ab4d2fe
 
   context '#show_person' do
     it { expect { sport_timer.show_person(0) }.not_to raise_error }
@@ -111,10 +80,6 @@ RSpec.describe 'SportTimer' do
     it { expect { sport_timer.remove_person(1) }.not_to raise_error }
     it { expect { sport_timer.remove_person(5) }.to raise_error(PersonNotFoundError) }
   end
-<<<<<<< HEAD
-
-=======
->>>>>>> 09169c9a03841c37f216e6871d044ceb6ab4d2fe
 
   context '#add_account' do
     it {
@@ -176,11 +141,7 @@ RSpec.describe 'SportTimer' do
     }
     it {
       id = 5
-<<<<<<< HEAD
       expect { sport_timer.edit_account(id, '', '',) }.to raise_error(AccountNotFoundError)
-=======
-      expect { sport_timer.edit_account(id, '', '') }.not_to raise_error
->>>>>>> 09169c9a03841c37f216e6871d044ceb6ab4d2fe
     }
   end
 
