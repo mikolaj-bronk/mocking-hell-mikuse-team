@@ -150,7 +150,7 @@ class SportTimer
     if !@@accounts[account_id].nil? && !@@workouts[workout_id].nil?
       progress = Progress.new(id, @@accounts[account_id], @@workouts[workout_id])
       @@progresses.insert(id, progress)
-      puts "Added new progress item on id => #{@@progress[id].id}."
+      puts "Added new progress item on id => #{@@progresses[id].id}."
     else
       puts "Account on id => #{account_id} does not exist." if @@accounts[account_id].nil?
       puts "Workout on id => #{workout_id} does not exist." if @@workouts[workout_id].nil?
@@ -170,7 +170,7 @@ class SportTimer
     puts 'Progresses:'
     i = 0
     while i < @@progresses.size
-      puts "Progress on id => #{@@histories[i].id}: #{@@histories[i]}" unless @@histories.at(i).nil?
+      puts "Progress on id => #{@@progresses[i].id}: #{@@progresses[i]}" unless @@progresses.at(i).nil?
       i += 1
     end
   end
