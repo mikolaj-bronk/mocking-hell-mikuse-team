@@ -1,6 +1,6 @@
-require_relative '../errors/AccountError'
-require_relative '../errors/PersonError'
-require_relative '../errors/WorkoutError'
+require_relative '../errors/account_error'
+require_relative '../errors/person_error'
+require_relative '../errors/workout_error'
 
 class SportTimer
   attr_accessor :people, :accounts, :workouts, :progresses
