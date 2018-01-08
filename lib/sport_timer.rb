@@ -112,12 +112,9 @@ class SportTimer
   end
 
   def remove_workout(id)
-    if !@@workouts.at(id).nil?
-      @@workouts[id] = nil
-      puts "Removed workout on id = #{id}."
-    else
-      raise WorkoutNotFoundError
-    end
+    raise WorkoutNotFoundError if @@workouts.at(id).nil?
+    @@workouts[id] = nil
+    puts "Removed workout on id = #{id}."
   end
 
   def add_progress(account_id, workout_id)
