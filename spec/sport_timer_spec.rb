@@ -209,8 +209,8 @@ RSpec.describe 'SportTimer' do
     let(:w2) { double('Workout', id: 2, date: Date.parse('2017-10-20'), distance: 5, duration: '00:19:33') }
 
     it {
-      p = double('Progress', id: 1, account: 1, workout: 1)
-      expect { sport_timer.add_progress(p.id, p.account, p.ticket) }.not_to raise_error
+      p = double('Progress', account: 1, workout: 1)
+      expect { sport_timer.add_progress(p.account, p.workout) }.not_to raise_error
     }
 
     it {
@@ -218,17 +218,17 @@ RSpec.describe 'SportTimer' do
       sport_timer.add_account(a2.id, a2.login, a2.password, a2.firstname, a2.lastname, a2.country)
       sport_timer.add_workout(w1.id, w1.date, w1.distance, w1.duration)
       sport_timer.add_workout(w2.id, w2.date, w2.distance, w2.duration)
-      p1 = double('Progress', id: 2, account: 1, workout: 2)
-      p2 = double('Progress', id: 3, account: 2, workout: 1)
-      expect { sport_timer.add_progress(p1.id, p1.account, p1.workout) }.not_to raise_error
-      expect { sport_timer.add_progress(p2.id, p2.account, p2.workout) }.not_to raise_error
+      p1 = double('Progress', account: 1, workout: 2)
+      p2 = double('Progress', account: 2, workout: 1)
+      expect { sport_timer.add_progress(p1.account, p1.workout) }.not_to raise_error
+      expect { sport_timer.add_progress(p2.account, p2.workout) }.not_to raise_error
     }
   end
 
   context '#show_progress' do
+    it { expect { sport_timer.show_progress(0) }.not_to raise_error }
     it { expect { sport_timer.show_progress(1) }.not_to raise_error }
     it { expect { sport_timer.show_progress(2) }.not_to raise_error }
-    it { expect { sport_timer.show_progress(3) }.not_to raise_error }
   end
 
   context '#show_all_progresses' do
