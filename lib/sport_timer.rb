@@ -1,9 +1,10 @@
 class SportTimer
-  attr_accessor :people, :accounts, :workouts
+  attr_accessor :people, :accounts, :workouts, :progresses
 
   @@people = []
   @@accounts = []
   @@workouts = []
+  @@progresses = []
 
   def add_person(firstname, lastname, country)
     size = @@people.size
@@ -12,10 +13,10 @@ class SportTimer
     person = Person.new(id, firstname, lastname, country)
     @@people.insert(id, person)
     puts "Added new person to database:
-    id- #{@@people[id].id} ,
-    firstname- #{@@people[id].firstname} ,
-    lastname- #{@@people[id].lastname} ,
-    country- #{@@people[id].country}."
+    id - #{@@people[id].id},
+    firstname - #{@@people[id].firstname},
+    lastname - #{@@people[id].lastname},
+    country - #{@@people[id].country}."
   end
 
   def show_person(id)
@@ -140,6 +141,38 @@ class SportTimer
       puts "Removed workout on id = #{id}."
     else
       raise WorkoutNotFoundError
+    end
+  end
+
+  def add_progress(account_id, workout_id)
+    max = @@progresses.size
+    id = 0
+    id += 1 while id < max && !@@progresses[id].nil?
+    if !@@accounts[account_id].nil? && !@@workouts[workout_id].nil?
+      progress = Progress.new(id, @@accounts[account_id], @@workouts[workout_id])
+      @@progresses.insert(id, progress)
+      puts "Added new progress item on id => #{@@progresses[id].id}."
+    else
+      puts "Account on id => #{account_id} does not exist." if @@accounts[account_id].nil?
+      puts "Workout on id => #{workout_id} does not exist." if @@workouts[workout_id].nil?
+      puts 'Adding a new entry failed.'
+    end
+  end
+
+  def show_progress(id)
+    if !@@progresses.at(id).nil?
+      puts "Progress on id => #{@@progresses[id].id}: #{@@progresses[id]}"
+    else
+      puts "Progress on id => #{id} does not exist."
+    end
+  end
+
+  def show_all_progresses
+    puts 'Progresses:'
+    i = 0
+    while i < @@progresses.size
+      puts "Progress on id => #{@@progresses[i].id}: #{@@progresses[i]}" unless @@progresses.at(i).nil?
+      i += 1
     end
   end
 end

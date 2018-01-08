@@ -13,3 +13,11 @@ plugins:
 
 exclude_patterns:
 - spec/**/*
+
+checks:
+  method-complexity:
+    config:
+      threshold: 20
+  method-lines:
+    config:
+      threshold: 50

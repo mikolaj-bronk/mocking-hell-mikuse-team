@@ -23,7 +23,6 @@ class Workout
   end
 
   def to_s
-    workout = "#{date} - #{distance} km - #{duration} - #{pace} min/km"
-    workout
+    "#{date} - #{distance} km - #{duration} - #{pace} min/km"
   end
 end
