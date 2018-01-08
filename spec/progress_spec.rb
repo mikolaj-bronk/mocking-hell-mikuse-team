@@ -1,7 +1,7 @@
 require_relative '../lib/progress.rb'
 
 RSpec.describe 'Progress' do
-  context '#new' do
+  describe '#new' do
     let(:id) { 1 }
     let(:account) { double('Account', id: 1, login: 'jbrzdakal', password: 'pass123', person: double('Person', id: 1, firstname: 'Jozef', lastname: 'Brzdakal', country: 'Poland')) }
     let(:workout) { double('Workout', id: 1, date: Date.parse('2018-01-05'), distance: 5, duration: '00:18:30') }
@@ -33,7 +33,7 @@ RSpec.describe 'Progress' do
     end
   end
 
-  context '#to_s' do
+  describe '#to_s' do
     let(:id) { 1 }
     let(:account) { double('Account', id: 1, login: 'jbrzdakal', password: 'pass123', person: double('Person', id: 1, firstname: 'Jozef', lastname: 'Brzdakal', country: 'Poland')) }
     let(:workout) { double('Workout', id: 1, date: Date.parse('2018-01-05'), distance: 5, duration: '00:18:30') }
