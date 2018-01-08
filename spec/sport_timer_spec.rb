@@ -6,7 +6,7 @@ require_relative '../lib/workout.rb'
 RSpec.describe 'SportTimer' do
   subject(:sport_timer) { SportTimer.new }
 
-  context '#add_person' do
+  describe '#add_person' do
     it {
       firstname = 'Jan'
       lastname = 'Bak'
@@ -21,7 +21,7 @@ RSpec.describe 'SportTimer' do
     }
   end
 
-  context '#insert_data_edit_person' do
+  describe '#insert_data_edit_person' do
     it {
       id = 0
       firstname = 'Math'
@@ -39,7 +39,7 @@ RSpec.describe 'SportTimer' do
     }
   end
 
-  context '#edit_person' do
+  describe '#edit_person' do
       it {
         id = 0
         country = 'Germany'
@@ -68,20 +68,19 @@ RSpec.describe 'SportTimer' do
       }
   end
 
-  context '#show_person' do
+  describe '#show_person' do
     it { expect { sport_timer.show_person(0) }.not_to raise_error }
     it { expect { sport_timer.show_person(1) }.not_to raise_error }
     it { expect { sport_timer.show_person(5) }.not_to raise_error }
   end
 
-  context '#remove_person' do
+  describe '#remove_person' do
     it { expect { sport_timer.remove_person(0) }.not_to raise_error }
     it { expect { sport_timer.remove_person(1) }.not_to raise_error }
     it { expect { sport_timer.remove_person(5) }.not_to raise_error }
   end
 
-
-  context '#add_account' do
+  describe '#add_account' do
     it {
       login = 'mjanniston'
       password = 'pass'
@@ -111,48 +110,48 @@ RSpec.describe 'SportTimer' do
     }
   end
 
-  context '#show_account' do
+  describe '#show_account' do
     it { expect { sport_timer.show_account(0) }.not_to raise_error }
     it { expect { sport_timer.show_account(1) }.not_to raise_error }
     it { expect { sport_timer.show_account(2) }.not_to raise_error }
     it { expect { sport_timer.show_account(5) }.not_to raise_error }
   end
 
-  context '#edit_account' do
+  describe '#edit_account' do
     it {
       id = 0
       login = 'Mark22'
-      expect { sport_timer.edit_account(id, login, '') }.not_to raise_error
+      expect { sport_timer.edit_account(id, login, '') }.to be_truthy
     }
     it {
       id = 1
       password = 'passsss'
-      expect { sport_timer.edit_account(id, '', password) }.not_to raise_error
+      expect { sport_timer.edit_account(id, '', password) }.to be_truthy
     }
     it {
       id = 1
       login = 'markopolo123'
       password = 'pass123'
-      expect { sport_timer.edit_account(id, login, password) }.not_to raise_error
+      expect { sport_timer.edit_account(id, login, password) }.to be_truthy
     }
     it {
       id = 0
-      expect { sport_timer.edit_account(id, '', '',) }.not_to raise_error
+      expect { sport_timer.edit_account(id, '', '') }.to be_truthy
     }
     it {
       id = 5
-      expect { sport_timer.edit_account(id, '', '',) }.not_to raise_error
+      expect { sport_timer.edit_account(id, '', '') }.not_to be_truthy
     }
   end
 
-  context '#remove_account' do
+  describe '#remove_account' do
     it { expect { sport_timer.remove_account(0) }.not_to raise_error }
     it { expect { sport_timer.remove_account(1) }.not_to raise_error }
     it { expect { sport_timer.remove_account(2) }.not_to raise_error }
     it { expect { sport_timer.remove_account(5) }.not_to raise_error }
   end
 
-  context '#add_workout' do
+  describe '#add_workout' do
     it {
       date = Date.parse('2018-01-05')
       distance = 4
@@ -167,7 +166,7 @@ RSpec.describe 'SportTimer' do
     }
   end
 
-  context '#edit_workout' do
+  describe '#edit_workout' do
     it {
       id = 0
       date = Date.parse('2018-01-06')
@@ -190,13 +189,13 @@ RSpec.describe 'SportTimer' do
     }
   end
 
-  context '#show_workout' do
+  describe '#show_workout' do
     it { expect { sport_timer.show_workout(0) }.not_to raise_error }
     it { expect { sport_timer.show_workout(1) }.not_to raise_error }
     it { expect { sport_timer.show_workout(5) }.not_to raise_error }
   end
 
-  context '#remove_workout' do
+  describe '#remove_workout' do
     it { expect { sport_timer.remove_workout(0) }.not_to raise_error }
     it { expect { sport_timer.remove_workout(1) }.not_to raise_error }
     it { expect { sport_timer.remove_workout(5) }.not_to raise_error }
