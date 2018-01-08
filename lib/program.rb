@@ -21,41 +21,42 @@ class Program
       menu
       input = gets.chomp
       case input
-      when '1'
-        users_submenu
-        case gets.chomp
         when '1'
-          show_user_action
+          users_submenu
+          case gets.chomp
+            when '1'
+              show_user_action
+            when '2'
+              edit_user_action
+            when '3'
+              remove_user_action
+            else
+              command_not_found
+          end
         when '2'
-          edit_user_action
+          activity_submenu
+          case gets.chomp
+            when '1'
+              show_workout_action
+            when '2'
+              edit_workout_action
+            when '3'
+              remove_workout_action
+            else
+              command_not_found
+          end
         when '3'
-          remove_user_action
+          authors
+        when '4'
+          exit
         else
           command_not_found
-        end
-      when '2'
-        activity_submenu
-        case gets.chomp
-        when '1'
-          show_workout_action
-        when '2'
-          edit_workout_action
-        when '3'
-          remove_workout_action
-        else
-          command_not_found
-        end
-      when '3'
-        authors
-      when '4'
-        exit
-      else
-        command_not_found
       end
-      puts ' '
       puts ' '
 
       next_step
+
+      puts ' '
       break if input.chomp == '6'
     end
   end
@@ -75,10 +76,9 @@ class Program
     date = gets.chomp
     puts 'Podaj dystans:'
     distance = gets.chomp
-    puts 'Podaj dystans:'
-    duration = gets.chomp
     puts 'Podaj czas trwania:'
-    @program.edit_workout(id, date, distance, duration)
+    duration = gets.chomp
+    @program.edit_workout(id.to_i, date, distance, duration)
     next_step
     gets.chomp
   end
@@ -106,7 +106,7 @@ class Program
     login = gets.chomp
     puts 'Podaj haslo:'
     password = gets.chomp
-    @program.edit_account(id, login, password)
+    @program.edit_account(id.to_i, login, password)
     next_step
     gets.chomp
   end

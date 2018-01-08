@@ -13,9 +13,9 @@ class SportTimer
     @@people.insert(id, person)
     puts "Added new person to database:
     id - #{@@people[id].id},
-    firstname - #{@@people[id].firstname},
-    lastname - #{@@people[id].lastname},
-    country - #{@@people[id].country}."
+    firstname - #{@@people[id].firstname}
+    lastname - #{@@people[id].lastname}
+    country - #{@@people[id].country}"
   end
 
   def show_person(id)
@@ -57,8 +57,8 @@ class SportTimer
     account = Account.new(id, login, password, person)
     @@accounts.insert(id, account)
     puts "Added new account:
-    login - #{login},
-    password - #{password}."
+    login - #{login}
+    password - #{password}"
   end
 
   def show_account(id)
@@ -101,10 +101,10 @@ class SportTimer
     workout = Workout.new(id, date, distance, duration)
     @@workouts.insert(id, workout)
     puts "Added new workout:
-    id - #{id} ,
-    date - #{date},
-    distance - #{distance},
-    duration - #{duration}."
+    id - #{id}
+    date - #{date}
+    distance - #{distance}
+    duration - #{duration}"
   end
 
   def insert_data_edit_workout(id, date, distance, duration)
