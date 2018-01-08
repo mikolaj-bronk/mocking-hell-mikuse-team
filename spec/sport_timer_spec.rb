@@ -204,30 +204,30 @@ RSpec.describe 'SportTimer' do
 
   context '#add_progress' do
     let(:a1) do
-      person1 = double('Person', id: 1, firstname: 'Math', lastname: 'Janniston', country: 'France')
-      double('Account', id: 1, login: 'mjanniston', password: 'pass', person: person1)
+      person1 = double('Person', firstname: 'Math', lastname: 'Janniston', country: 'France')
+      double('Account', login: 'mjanniston', password: 'pass', person: person1)
     end
 
     let(:a2) do
-      person2 = double('Person', id: 1, firstname: 'Sebastian', lastname: 'Gamrot', country: 'USA')
-      double('Account', id: 2, login: 'szuk', password: 'pass2234', person: person2)
+      person2 = double('Person', firstname: 'Sebastian', lastname: 'Gamrot', country: 'USA')
+      double('Account', login: 'szuk', password: 'pass2234', person: person2)
     end
 
-    let(:w1) { double('Workout', id: 1, date: Date.parse('2017-10-15'), distance: 10, duration: '00:39:17') }
-    let(:w2) { double('Workout', id: 2, date: Date.parse('2017-10-20'), distance: 5, duration: '00:19:33') }
+    let(:w1) { double('Workout', date: Date.parse('2017-10-15'), distance: 10, duration: '00:39:17') }
+    let(:w2) { double('Workout', date: Date.parse('2017-10-20'), distance: 5, duration: '00:19:33') }
 
     it {
-      p = double('Progress', account: 1, workout: 1)
+      p = double('Progress', account: 0, workout: 0)
       expect { sport_timer.add_progress(p.account, p.workout) }.not_to raise_error
     }
 
     it {
-      sport_timer.add_account(a1.id, a1.login, a1.password, a1.person)
-      sport_timer.add_account(a2.id, a2.login, a2.password, a2.person)
-      sport_timer.add_workout(w1.id, w1.date, w1.distance, w1.duration)
-      sport_timer.add_workout(w2.id, w2.date, w2.distance, w2.duration)
-      p1 = double('Progress', account: 1, workout: 2)
-      p2 = double('Progress', account: 2, workout: 1)
+      sport_timer.add_account(a1.login, a1.password, a1.person)
+      sport_timer.add_account(a2.login, a2.password, a2.person)
+      sport_timer.add_workout(w1.date, w1.distance, w1.duration)
+      sport_timer.add_workout(w2.date, w2.distance, w2.duration)
+      p1 = double('Progress', account: 0, workout: 0)
+      p2 = double('Progress', account: 1, workout: 1)
       expect { sport_timer.add_progress(p1.account, p1.workout) }.not_to raise_error
       expect { sport_timer.add_progress(p2.account, p2.workout) }.not_to raise_error
     }
