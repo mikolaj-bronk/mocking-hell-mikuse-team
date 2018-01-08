@@ -1,9 +1,10 @@
 class SportTimer
-  attr_accessor :people, :accounts, :workouts
+  attr_accessor :people, :accounts, :workouts, :progresses
 
   @@people = []
   @@accounts = []
   @@workouts = []
+  @@progresses = []
 
   def add_person(firstname, lastname, country)
     size = @@people.size
