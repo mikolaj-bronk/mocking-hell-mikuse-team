@@ -222,8 +222,8 @@ RSpec.describe 'SportTimer' do
     }
 
     it {
-      sport_timer.add_account(a1.id, a1.login, a1.password, a1.firstname, a1.lastname, a1.country)
-      sport_timer.add_account(a2.id, a2.login, a2.password, a2.firstname, a2.lastname, a2.country)
+      sport_timer.add_account(a1.id, a1.login, a1.password, a1.person)
+      sport_timer.add_account(a2.id, a2.login, a2.password, a2.person)
       sport_timer.add_workout(w1.id, w1.date, w1.distance, w1.duration)
       sport_timer.add_workout(w2.id, w2.date, w2.distance, w2.duration)
       p1 = double('Progress', account: 1, workout: 2)
