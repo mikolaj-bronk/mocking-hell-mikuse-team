@@ -156,16 +156,17 @@ RSpec.describe 'SportTimer' do
       it { expect { sport_timer.remove_account(2) }.to raise_error(PersonNotFoundError) }
     end
 
-    context 'when account is found' do
+    context 'when account found' do
       it {
         login = 'mjanniston'
         password = 'pass'
         firstname = 'Math'
         lastname = 'Janniston'
         country = 'France'
-        person = double('Person', id: 3, firstname: firstname, lastname: lastname, country: country)
+        sport_timer.add_person(firstname, lastname, country)
+        person = Person.new(0, firstname, lastname, country)
         sport_timer.add_account(login, password, person)
-        expect { sport_timer.remove_account(3) }.not_to raise_error
+        expect { sport_timer.remove_account(0) }.not_to raise_error
       }
     end
   end
@@ -186,38 +187,53 @@ RSpec.describe 'SportTimer' do
   end
 
   describe '#edit_workout' do
-    it {
-      id = 0
-      date = Date.parse('2018-01-06')
-      distance = 6
-      duration = '00:25:30'
-      expect { sport_timer.edit_workout(id, date, distance, duration) }.not_to raise_error
-    }
-    it {
-      id = 1
-      date = Date.parse('2018-01-06')
-      expect { sport_timer.edit_workout(id, date, '', '') }.not_to raise_error
-    }
-    it {
-      id = 0
-      expect { sport_timer.edit_workout(id, '', '', '') }.not_to raise_error
-    }
+    context 'when workout found' do
+      it {
+        id = 0
+        date = Date.parse('2018-01-06')
+        distance = 6
+        duration = '00:25:30'
+        expect { sport_timer.edit_workout(id, date, distance, duration) }.not_to raise_error
+      }
+      it {
+        id = 1
+        date = Date.parse('2018-01-06')
+        expect { sport_timer.edit_workout(id, date, '', '') }.not_to raise_error
+      }
+      it {
+        id = 0
+        expect { sport_timer.edit_workout(id, '', '', '') }.not_to raise_error
+      }
+    end
+
+    context 'when workout not found' do
     it {
       id = 5
       expect { sport_timer.edit_workout(id, '', '', '') }.to raise_error(WorkoutNotFoundError)
     }
+    end
   end
 
   describe '#show_workout' do
-    it { expect { sport_timer.show_workout(0) }.not_to raise_error }
-    it { expect { sport_timer.show_workout(1) }.not_to raise_error }
-    it { expect { sport_timer.show_workout(5) }.to raise_error(WorkoutNotFoundError) }
+    context 'when workout found' do
+      it { expect { sport_timer.show_workout(0) }.not_to raise_error }
+      it { expect { sport_timer.show_workout(1) }.not_to raise_error }
+    end
+
+    context 'when workout not found' do
+      it { expect { sport_timer.show_workout(5) }.to raise_error(WorkoutNotFoundError) }
+    end
   end
 
   describe '#remove_workout' do
-    it { expect { sport_timer.remove_workout(0) }.not_to raise_error }
-    it { expect { sport_timer.remove_workout(1) }.not_to raise_error }
-    it { expect { sport_timer.remove_workout(5) }.to raise_error(WorkoutNotFoundError) }
+    context 'when workout found' do
+      it { expect { sport_timer.remove_workout(0) }.not_to raise_error }
+      it { expect { sport_timer.remove_workout(1) }.not_to raise_error }
+    end
+
+    context 'when workout not found' do
+      it { expect { sport_timer.remove_workout(5) }.to raise_error(WorkoutNotFoundError) }
+    end
   end
 
   describe '#add_progress' do
