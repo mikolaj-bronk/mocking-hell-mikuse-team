@@ -53,9 +53,10 @@ class Program
         command_not_found
       end
       puts ' '
-      puts ' '
 
       next_step
+
+      puts ' '
       break if input.chomp == '6'
     end
   end
@@ -75,10 +76,9 @@ class Program
     date = gets.chomp
     puts 'Podaj dystans:'
     distance = gets.chomp
-    puts 'Podaj dystans:'
-    duration = gets.chomp
     puts 'Podaj czas trwania:'
-    @program.edit_workout(id, date, distance, duration)
+    duration = gets.chomp
+    @program.edit_workout(id.to_i, date, distance, duration)
     next_step
     gets.chomp
   end
@@ -106,7 +106,7 @@ class Program
     login = gets.chomp
     puts 'Podaj haslo:'
     password = gets.chomp
-    @program.edit_account(id, login, password)
+    @program.edit_account(id.to_i, login, password)
     next_step
     gets.chomp
   end
