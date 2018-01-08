@@ -40,7 +40,7 @@ RSpec.describe 'Progress' do
     subject(:progress) { Progress.new id, account, workout }
 
     it 'returns correct output' do
-      expect(progress.to_s).to be_a(String).and include(account.login, workout.date.to_s, workout.distance.to_s, workout.duration.to_s)
+      expect(progress.to_s).to be_a(String).and include(account.login, workout.to_s)
     end
   end
 end
