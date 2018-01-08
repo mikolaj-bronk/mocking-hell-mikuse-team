@@ -1,3 +1,7 @@
+require_relative '../errors/AccountError'
+require_relative '../errors/PersonError'
+require_relative '../errors/WorkoutError'
+
 class SportTimer
   attr_accessor :people, :accounts, :workouts, :progresses
 
@@ -13,10 +17,10 @@ class SportTimer
     person = Person.new(id, firstname, lastname, country)
     @@people.insert(id, person)
     puts "Added new person to database:
-    id - #{@@people[id].id},
-    firstname - #{@@people[id].firstname},
-    lastname - #{@@people[id].lastname},
-    country - #{@@people[id].country}."
+    id - #{@@people[id].id}
+    firstname - #{@@people[id].firstname}
+    lastname - #{@@people[id].lastname}
+    country - #{@@people[id].country}"
   end
 
   def show_person(id)
@@ -49,8 +53,8 @@ class SportTimer
     account = Account.new(id, login, password, person)
     @@accounts.insert(id, account)
     puts "Added new account:
-    login - #{login},
-    password - #{password}."
+    login - #{login}
+    password - #{password}"
   end
 
   def show_account(id)
@@ -84,10 +88,10 @@ class SportTimer
     workout = Workout.new(id, date, distance, duration)
     @@workouts.insert(id, workout)
     puts "Added new workout:
-    id - #{id} ,
-    date - #{date},
-    distance - #{distance},
-    duration - #{duration}."
+    id - #{id}
+    date - #{date}
+    distance - #{distance}
+    duration - #{duration}"
   end
 
   def insert_data_edit_workout(id, date, distance, duration)
@@ -143,23 +147,5 @@ class SportTimer
       puts "Progress on id => #{@@progresses[i].id}: #{@@progresses[i]}" unless @@progresses.at(i).nil?
       i += 1
     end
-  end
-end
-
-class PersonNotFoundError < StandardError
-  def initialize(msg = 'Person not found in database')
-    super
-  end
-end
-
-class AccountNotFoundError < StandardError
-  def initialize(msg = 'Account not found in database')
-    super
-  end
-end
-
-class WorkoutNotFoundError < StandardError
-  def initialize(msg = 'Workout not found in database')
-    super
   end
 end
