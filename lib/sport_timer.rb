@@ -71,14 +71,10 @@ class SportTimer
   end
 
   def remove_account(id)
-    if !@@accounts.at(id).nil?
-      @@accounts[id] = nil
-      remove_person(id)
-      puts "Removed account on id = #{id}."
-    else
-      puts 'There is no such account in database.'
-      # raise AccountNotFoundError
-    end
+    raise AccountNotFoundError if @@accounts.at(id).nil?
+    @@accounts[id] = nil
+    remove_person(id)
+    puts "Removed account on id = #{id}."
   end
 
   def add_workout(date, distance, duration)
