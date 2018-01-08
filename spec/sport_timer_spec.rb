@@ -132,7 +132,7 @@ RSpec.describe 'SportTimer' do
     it {
       id = 1
       login = 'markopolo123'
-      password = 'pass123'
+      password = 'pass12'
       expect { sport_timer.edit_account(id, login, password) }.not_to raise_error
     }
     it {
