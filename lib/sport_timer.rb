@@ -20,20 +20,14 @@ class SportTimer
   end
 
   def show_person(id)
-    if !@@people.at(id).nil?
-      puts "Person on id = #{@@people[id].id}: #{@@people[id]}"
-    else
-      puts "Person on id = #{id} does not exist in database."
-    end
+    raise PersonNotFoundError if @@people.at(id).nil?
+    puts "Person on id = #{@@people[id].id}: #{@@people[id]}"
   end
 
   def edit_person(id, firstname, lastname, country)
-    if !@@people.at(id).nil?
-      insert_data_edit_person(id, firstname, lastname, country)
-      puts "Updated person on id = #{@@people[id].id}."
-    else
-      puts "Person on id = #{id} does not exist in database."
-    end
+    raise PersonNotFoundError if @@people.at(id).nil?
+    insert_data_edit_person(id, firstname, lastname, country)
+    puts "Updated person on id = #{@@people[id].id}."
   end
 
   def insert_data_edit_person(id, firstname, lastname, country)
@@ -43,12 +37,9 @@ class SportTimer
   end
 
   def remove_person(id)
-    if !@@people.at(id).nil?
-      @@people[id] = nil
-      puts "Removed person on id = #{id}."
-    else
-      puts "Person on id = #{id} does not exist in database."
-    end
+    raise PersonNotFoundError if @@people.at(id).nil?
+    @@people[id] = nil
+    puts "Removed person on id = #{id}."
   end
 
   def add_account(login, password, person)
@@ -63,11 +54,8 @@ class SportTimer
   end
 
   def show_account(id)
-    if !@@accounts.at(id).nil?
-      puts "Account on id = #{id}: #{@@accounts[id]}"
-    else
-      puts "Account on id = #{id} does not exist in database."
-    end
+    raise AccountNotFoundError if @@accounts.at(id).nil?
+    puts "Account on id = #{id}: #{@@accounts[id]}"
   end
 
   def edit_login_password(id, login, password)
@@ -76,23 +64,17 @@ class SportTimer
   end
 
   def edit_account(id, login, password)
-    if !@@accounts.at(id).nil?
-      @@accounts[id].person = @@people[id]
-      edit_login_password(id, login, password)
-      puts "Updated account on id = #{id}."
-    else
-      puts "Account on id = #{id} does not exist in database."
-    end
+    raise AccountNotFoundError if @@accounts.at(id).nil?
+    @@accounts[id].person = @@people[id]
+    edit_login_password(id, login, password)
+    puts "Updated account on id = #{id}."
   end
 
   def remove_account(id)
-    if !@@accounts.at(id).nil?
-      @@accounts[id] = nil
-      remove_person(id)
-      puts "Removed account on id = #{id}."
-    else
-      puts "Account on id = #{id} does not exist in database."
-    end
+    raise AccountNotFoundError if @@accounts.at(id).nil?
+    @@accounts[id] = nil
+    remove_person(id)
+    puts "Removed account on id = #{id}."
   end
 
   def add_workout(date, distance, duration)
@@ -115,32 +97,20 @@ class SportTimer
   end
 
   def edit_workout(id, date, distance, duration)
-    if !@@workouts.at(id).nil?
-      insert_data_edit_workout(id, date, distance, duration)
-      puts "Updated workout on id = #{id}."
-    else
-      puts "Workout on id = #{id} does not exist in database."
-    end
+    raise WorkoutNotFoundError if @@workouts.at(id).nil?
+    insert_data_edit_workout(id, date, distance, duration)
+    puts "Updated workout on id = #{id}."
   end
 
   def show_workout(id)
-    if !@@workouts.at(id).nil?
-      puts "Workout on id = #{id}:
-      date = #{@@workouts[id].date} ,
-      distance = #{@@workouts[id].distance} ,
-      duration = #{@@workouts[id].duration}."
-    else
-      puts "Workout on id = #{id} does not exist in database."
-    end
+    raise WorkoutNotFoundError if @@workouts.at(id).nil?
+    puts "Workout on id = #{id}: #{@@workouts[id]}"
   end
 
   def remove_workout(id)
-    if !@@workouts.at(id).nil?
-      @@workouts[id] = nil
-      puts "Removed workout on id = #{id}."
-    else
-      puts "Workout on id = #{id} does not exist in database."
-    end
+    raise WorkoutNotFoundError if @@workouts.at(id).nil?
+    @@workouts[id] = nil
+    puts "Removed workout on id = #{id}."
   end
 
   def add_progress(account_id, workout_id)
@@ -173,5 +143,23 @@ class SportTimer
       puts "Progress on id => #{@@progresses[i].id}: #{@@progresses[i]}" unless @@progresses.at(i).nil?
       i += 1
     end
+  end
+end
+
+class PersonNotFoundError < StandardError
+  def initialize(msg = 'Person not found in database')
+    super
+  end
+end
+
+class AccountNotFoundError < StandardError
+  def initialize(msg = 'Account not found in database')
+    super
+  end
+end
+
+class WorkoutNotFoundError < StandardError
+  def initialize(msg = 'Workout not found in database')
+    super
   end
 end
