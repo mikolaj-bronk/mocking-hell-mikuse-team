@@ -79,7 +79,6 @@ class SportTimer
       @@accounts[id].person = @@people[id]
       edit_login_password(id, login, password)
       puts "Updated account on id = #{id}."
-      true
     else
       puts "Account on id = #{id} does not exist in database."
     end
