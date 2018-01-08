@@ -7,7 +7,7 @@ require_relative '../lib/progress.rb'
 RSpec.describe 'SportTimer' do
   subject(:sport_timer) { SportTimer.new }
 
-  context '#add_person' do
+  describe '#add_person' do
     it {
       firstname = 'Jan'
       lastname = 'Bak'
@@ -22,7 +22,7 @@ RSpec.describe 'SportTimer' do
     }
   end
 
-  context '#insert_data_edit_person' do
+  describe '#insert_data_edit_person' do
     it {
       id = 0
       firstname = 'Math'
@@ -40,7 +40,7 @@ RSpec.describe 'SportTimer' do
     }
   end
 
-  context '#edit_person' do
+  describe '#edit_person' do
     it {
       id = 0
       country = 'Germany'
@@ -69,19 +69,19 @@ RSpec.describe 'SportTimer' do
     }
   end
 
-  context '#show_person' do
+  describe '#show_person' do
     it { expect { sport_timer.show_person(0) }.not_to raise_error }
     it { expect { sport_timer.show_person(1) }.not_to raise_error }
     it { expect { sport_timer.show_person(5) }.to raise_error(PersonNotFoundError) }
   end
 
-  context '#remove_person' do
+  describe '#remove_person' do
     it { expect { sport_timer.remove_person(0) }.not_to raise_error }
     it { expect { sport_timer.remove_person(1) }.not_to raise_error }
     it { expect { sport_timer.remove_person(5) }.to raise_error(PersonNotFoundError) }
   end
 
-  context '#add_account' do
+  describe '#add_account' do
     it {
       login = 'mjanniston'
       password = 'pass'
@@ -111,14 +111,14 @@ RSpec.describe 'SportTimer' do
     }
   end
 
-  context '#show_account' do
+  describe '#show_account' do
     it { expect { sport_timer.show_account(0) }.not_to raise_error }
     it { expect { sport_timer.show_account(1) }.not_to raise_error }
     it { expect { sport_timer.show_account(2) }.not_to raise_error }
     it { expect { sport_timer.show_account(5) }.to raise_error(AccountNotFoundError) }
   end
 
-  context '#edit_account' do
+  describe '#edit_account' do
     it {
       id = 0
       login = 'Mark22'
@@ -145,14 +145,32 @@ RSpec.describe 'SportTimer' do
     }
   end
 
-  context '#remove_account' do
-    it { expect { sport_timer.remove_account(0) }.to raise_error(PersonNotFoundError) }
-    it { expect { sport_timer.remove_account(1) }.to raise_error(PersonNotFoundError) }
-    it { expect { sport_timer.remove_account(2) }.to raise_error(PersonNotFoundError) }
-    it { expect { sport_timer.remove_account(5) }.to raise_error(AccountNotFoundError) }
+  describe '#remove_account' do
+    context 'when account not found' do
+      it { expect { sport_timer.remove_account(5) }.to raise_error(AccountNotFoundError) }
+    end
+
+    context 'when person not found' do
+      it { expect { sport_timer.remove_account(0) }.to raise_error(PersonNotFoundError) }
+      it { expect { sport_timer.remove_account(1) }.to raise_error(PersonNotFoundError) }
+      it { expect { sport_timer.remove_account(2) }.to raise_error(PersonNotFoundError) }
+    end
+
+    context 'when account is found' do
+      it {
+        login = 'mjanniston'
+        password = 'pass'
+        firstname = 'Math'
+        lastname = 'Janniston'
+        country = 'France'
+        person = double('Person', id: 3, firstname: firstname, lastname: lastname, country: country)
+        sport_timer.add_account(login, password, person)
+        it { expect { sport_timer.remove_account(3) }.not_to raise_error }
+      }
+    end
   end
 
-  context '#add_workout' do
+  describe '#add_workout' do
     it {
       date = Date.parse('2018-01-05')
       distance = 4
@@ -167,7 +185,7 @@ RSpec.describe 'SportTimer' do
     }
   end
 
-  context '#edit_workout' do
+  describe '#edit_workout' do
     it {
       id = 0
       date = Date.parse('2018-01-06')
@@ -190,19 +208,19 @@ RSpec.describe 'SportTimer' do
     }
   end
 
-  context '#show_workout' do
+  describe '#show_workout' do
     it { expect { sport_timer.show_workout(0) }.not_to raise_error }
     it { expect { sport_timer.show_workout(1) }.not_to raise_error }
     it { expect { sport_timer.show_workout(5) }.to raise_error(WorkoutNotFoundError) }
   end
 
-  context '#remove_workout' do
+  describe '#remove_workout' do
     it { expect { sport_timer.remove_workout(0) }.not_to raise_error }
     it { expect { sport_timer.remove_workout(1) }.not_to raise_error }
     it { expect { sport_timer.remove_workout(5) }.to raise_error(WorkoutNotFoundError) }
   end
 
-  context '#add_progress' do
+  describe '#add_progress' do
     let(:a1) do
       person1 = double('Person', firstname: 'Math', lastname: 'Janniston', country: 'France')
       double('Account', login: 'mjanniston', password: 'pass', person: person1)
@@ -233,13 +251,13 @@ RSpec.describe 'SportTimer' do
     }
   end
 
-  context '#show_progress' do
+  describe '#show_progress' do
     it { expect { sport_timer.show_progress(0) }.not_to raise_error }
     it { expect { sport_timer.show_progress(1) }.not_to raise_error }
     it { expect { sport_timer.show_progress(2) }.not_to raise_error }
   end
 
-  context '#show_all_progresses' do
+  describe '#show_all_progresses' do
     it { expect { sport_timer.show_all_progresses }.not_to raise_error }
   end
 end
