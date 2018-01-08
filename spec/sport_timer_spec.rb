@@ -200,4 +200,38 @@ RSpec.describe 'SportTimer' do
     it { expect { sport_timer.remove_workout(1) }.not_to raise_error }
     it { expect { sport_timer.remove_workout(5) }.not_to raise_error }
   end
+
+  context '#add_progress' do
+    let(:a1) { double('Account', id: 1, login: 'mjanniston', password: 'pass', firstname: 'Math', lastname: 'Janniston', country: 'France') }
+    let(:a2) { double('Account', id: 2, login: 'szuk', password: 'pass2234', firstname: 'Sebastian', lastname: 'Gamrot', country: 'USA') }
+
+    let(:w1) { double('Workout', id: 1, date: Date.parse('2017-10-15'), distance: 10, duration: '00:39:17') }
+    let(:w2) { double('Workout', id: 2, date: Date.parse('2017-10-20'), distance: 5, duration: '00:19:33') }
+
+    it {
+      p = double('Progress', id: 1, account: 1, workout: 1)
+      expect { sport_timer.add_progress(p.id, p.account, p.ticket) }.not_to raise_error
+    }
+
+    it {
+      sport_timer.add_account(a1.id, a1.login, a1.password, a1.firstname, a1.lastname, a1.country)
+      sport_timer.add_account(a2.id, a2.login, a2.password, a2.firstname, a2.lastname, a2.country)
+      sport_timer.add_workout(w1.id, w1.date, w1.distance, w1.duration)
+      sport_timer.add_workout(w2.id, w2.date, w2.distance, w2.duration)
+      p1 = double('Progress', id: 2, account: 1, workout: 2)
+      p2 = double('Progress', id: 3, account: 2, workout: 1)
+      expect { sport_timer.add_progress(p1.id, p1.account, p1.workout) }.not_to raise_error
+      expect { sport_timer.add_progress(p2.id, p2.account, p2.workout) }.not_to raise_error
+    }
+  end
+
+  context '#show_progress' do
+    it { expect { sport_timer.show_progress(1) }.not_to raise_error }
+    it { expect { sport_timer.show_progress(2) }.not_to raise_error }
+    it { expect { sport_timer.show_progress(3) }.not_to raise_error }
+  end
+
+  context '#show_all_progresses' do
+    it { expect { sport_timer.show_all_progresses }.not_to raise_error }
+  end
 end
