@@ -2,6 +2,7 @@ require_relative '../lib/sport_timer.rb'
 require_relative '../lib/person.rb'
 require_relative '../lib/account.rb'
 require_relative '../lib/workout.rb'
+require_relative '../lib/progress.rb'
 
 RSpec.describe 'SportTimer' do
   subject(:sport_timer) { SportTimer.new }
@@ -202,8 +203,15 @@ RSpec.describe 'SportTimer' do
   end
 
   context '#add_progress' do
-    let(:a1) { double('Account', id: 1, login: 'mjanniston', password: 'pass', firstname: 'Math', lastname: 'Janniston', country: 'France') }
-    let(:a2) { double('Account', id: 2, login: 'szuk', password: 'pass2234', firstname: 'Sebastian', lastname: 'Gamrot', country: 'USA') }
+    let(:a1) do
+      person1 = double('Person', id: 1, firstname: 'Math', lastname: 'Janniston', country: 'France')
+      double('Account', id: 1, login: 'mjanniston', password: 'pass', person: person1)
+    end
+
+    let(:a2) do
+      person2 = double('Person', id: 1, firstname: 'Sebastian', lastname: 'Gamrot', country: 'USA')
+      double('Account', id: 2, login: 'szuk', password: 'pass2234', person: person2)
+    end
 
     let(:w1) { double('Workout', id: 1, date: Date.parse('2017-10-15'), distance: 10, duration: '00:39:17') }
     let(:w2) { double('Workout', id: 2, date: Date.parse('2017-10-20'), distance: 5, duration: '00:19:33') }
