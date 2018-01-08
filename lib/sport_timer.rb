@@ -1,9 +1,14 @@
+require_relative '../errors/AccountError'
+require_relative '../errors/PersonError'
+require_relative '../errors/WorkoutError'
+
 class SportTimer
-  attr_accessor :people, :accounts, :workouts
+  attr_accessor :people, :accounts, :workouts, :progresses
 
   @@people = []
   @@accounts = []
   @@workouts = []
+  @@progresses = []
 
   def add_person(firstname, lastname, country)
     size = @@people.size
@@ -12,27 +17,21 @@ class SportTimer
     person = Person.new(id, firstname, lastname, country)
     @@people.insert(id, person)
     puts "Added new person to database:
-    id - #{@@people[id].id},
+    id - #{@@people[id].id}
     firstname - #{@@people[id].firstname}
     lastname - #{@@people[id].lastname}
     country - #{@@people[id].country}"
   end
 
   def show_person(id)
-    if !@@people.at(id).nil?
-      puts "Person on id = #{@@people[id].id}: #{@@people[id]}"
-    else
-      puts "Person on id = #{id} does not exist in database."
-    end
+    raise PersonNotFoundError if @@people.at(id).nil?
+    puts "Person on id = #{@@people[id].id}: #{@@people[id]}"
   end
 
   def edit_person(id, firstname, lastname, country)
-    if !@@people.at(id).nil?
-      insert_data_edit_person(id, firstname, lastname, country)
-      puts "Updated person on id = #{@@people[id].id}."
-    else
-      puts "Person on id = #{id} does not exist in database."
-    end
+    raise PersonNotFoundError if @@people.at(id).nil?
+    insert_data_edit_person(id, firstname, lastname, country)
+    puts "Updated person on id = #{@@people[id].id}."
   end
 
   def insert_data_edit_person(id, firstname, lastname, country)
@@ -42,12 +41,9 @@ class SportTimer
   end
 
   def remove_person(id)
-    if !@@people.at(id).nil?
-      @@people[id] = nil
-      puts "Removed person on id = #{id}."
-    else
-      puts "Person on id = #{id} does not exist in database."
-    end
+    raise PersonNotFoundError if @@people.at(id).nil?
+    @@people[id] = nil
+    puts "Removed person on id = #{id}."
   end
 
   def add_account(login, password, person)
@@ -62,11 +58,8 @@ class SportTimer
   end
 
   def show_account(id)
-    if !@@accounts.at(id).nil?
-      puts "Account on id = #{id}: #{@@accounts[id]}"
-    else
-      puts "Account on id = #{id} does not exist in database."
-    end
+    raise AccountNotFoundError if @@accounts.at(id).nil?
+    puts "Account on id = #{id}: #{@@accounts[id]}"
   end
 
   def edit_login_password(id, login, password)
@@ -75,23 +68,17 @@ class SportTimer
   end
 
   def edit_account(id, login, password)
-    if !@@accounts.at(id).nil?
-      @@accounts[id].person = @@people[id]
-      edit_login_password(id, login, password)
-      puts "Updated account on id = #{id}."
-    else
-      puts "Account on id = #{id} does not exist in database."
-    end
+    raise AccountNotFoundError if @@accounts.at(id).nil?
+    @@accounts[id].person = @@people[id]
+    edit_login_password(id, login, password)
+    puts "Updated account on id = #{id}."
   end
 
   def remove_account(id)
-    if !@@accounts.at(id).nil?
-      @@accounts[id] = nil
-      remove_person(id)
-      puts "Removed account on id = #{id}."
-    else
-      puts "Account on id = #{id} does not exist in database."
-    end
+    raise AccountNotFoundError if @@accounts.at(id).nil?
+    @@accounts[id] = nil
+    remove_person(id)
+    puts "Removed account on id = #{id}."
   end
 
   def add_workout(date, distance, duration)
@@ -114,31 +101,51 @@ class SportTimer
   end
 
   def edit_workout(id, date, distance, duration)
-    if !@@workouts.at(id).nil?
-      insert_data_edit_workout(id, date, distance, duration)
-      puts "Updated workout on id = #{id}."
-    else
-      puts "Workout on id = #{id} does not exist in database."
-    end
+    raise WorkoutNotFoundError if @@workouts.at(id).nil?
+    insert_data_edit_workout(id, date, distance, duration)
+    puts "Updated workout on id = #{id}."
   end
 
   def show_workout(id)
-    if !@@workouts.at(id).nil?
-      puts "Workout on id = #{id}:
-      date = #{@@workouts[id].date}
-      distance = #{@@workouts[id].distance}
-      duration = #{@@workouts[id].duration}."
-    else
-      puts "Workout on id = #{id} does not exist in database."
-    end
+    raise WorkoutNotFoundError if @@workouts.at(id).nil?
+    puts "Workout on id = #{id}: #{@@workouts[id]}"
   end
 
   def remove_workout(id)
-    if !@@workouts.at(id).nil?
-      @@workouts[id] = nil
-      puts "Removed workout on id = #{id}."
+    raise WorkoutNotFoundError if @@workouts.at(id).nil?
+    @@workouts[id] = nil
+    puts "Removed workout on id = #{id}."
+  end
+
+  def add_progress(account_id, workout_id)
+    max = @@progresses.size
+    id = 0
+    id += 1 while id < max && !@@progresses[id].nil?
+    if !@@accounts[account_id].nil? && !@@workouts[workout_id].nil?
+      progress = Progress.new(id, @@accounts[account_id], @@workouts[workout_id])
+      @@progresses.insert(id, progress)
+      puts "Added new progress item on id => #{@@progresses[id].id}."
     else
-      puts "Workout on id = #{id} does not exist in database."
+      puts "Account on id => #{account_id} does not exist." if @@accounts[account_id].nil?
+      puts "Workout on id => #{workout_id} does not exist." if @@workouts[workout_id].nil?
+      puts 'Adding a new entry failed.'
+    end
+  end
+
+  def show_progress(id)
+    if !@@progresses.at(id).nil?
+      puts "Progress on id => #{@@progresses[id].id}: #{@@progresses[id]}"
+    else
+      puts "Progress on id => #{id} does not exist."
+    end
+  end
+
+  def show_all_progresses
+    puts 'Progresses:'
+    i = 0
+    while i < @@progresses.size
+      puts "Progress on id => #{@@progresses[i].id}: #{@@progresses[i]}" unless @@progresses.at(i).nil?
+      i += 1
     end
   end
 end
