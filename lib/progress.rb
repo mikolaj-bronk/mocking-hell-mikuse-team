@@ -8,6 +8,6 @@ class Progress
   end
 
   def to_s
-    "#{account.login} - date: #{workout.date} distance: #{workout.distance} duration: #{workout.duration}"
+    "#{account.login} - #{workout}"
   end
 end

@@ -5,7 +5,7 @@ RSpec.describe 'Person' do
     let(:id) { 1 }
     let(:firstname) { 'Jozef' }
     let(:lastname) { 'Brzdakal' }
-    let(:country) { 'Poland'}
+    let(:country) { 'Poland' }
     subject(:person) { Person.new id, firstname, lastname, country }
 
     it 'creates a new person' do
