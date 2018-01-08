@@ -165,7 +165,7 @@ RSpec.describe 'SportTimer' do
         country = 'France'
         person = double('Person', id: 3, firstname: firstname, lastname: lastname, country: country)
         sport_timer.add_account(login, password, person)
-        it { expect { sport_timer.remove_account(3) }.not_to raise_error }
+        expect { sport_timer.remove_account(3) }.not_to raise_error
       }
     end
   end
