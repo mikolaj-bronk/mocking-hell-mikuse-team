@@ -26,12 +26,17 @@
   
   <tr><td> <b>Test Coverage</b> </td>
   <td>  <a href="https://codeclimate.com/github/my-rspec/mocking-hell-mikuse-team/test_coverage"> <img src="https://api.codeclimate.com/v1/badges/9dbd04fdfe072b95d34b/test_coverage"></a></td></tr>
-  </table><br><br>
+  </table>
 
 
 # [![Awesome](https://mmiki26.nstrefa.pl/run.PNG)](https://github.com/my-rspec/mocking-hell-mikuse-team) O programie
 
 Sport timer to aplikacja dla biegacza lub trenera personalnego. Służy ona do przechowywania informacji o wynikach sportowców, co pozwala na późniejszą analizę postępu.
 
+# [![Awesome](https://mmiki26.nstrefa.pl/run.PNG)](https://github.com/my-rspec/mocking-hell-mikuse-team) Uruchamianie
+
+Aby uruchomić program z konsoli należy przejść do katalogu bin i wpisać:
+ 
+`ruby run`
 
 
