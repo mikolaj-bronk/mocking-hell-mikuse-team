@@ -35,8 +35,46 @@ Sport timer to aplikacja dla biegacza lub trenera personalnego. Służy ona do p
 
 # [![Awesome](https://mmiki26.nstrefa.pl/run.PNG)](https://github.com/my-rspec/mocking-hell-mikuse-team) Uruchamianie
 
-Aby uruchomić program z konsoli należy przejść do katalogu bin i wpisać komendę:
+Aby uruchomić program z konsoli należy przejść do katalogu `bin` i wpisać komendę:
  
 `ruby run`
+
+# [![Awesome](https://mmiki26.nstrefa.pl/run.PNG)](https://github.com/my-rspec/mocking-hell-mikuse-team) Mockowanie
+
+
+### person_spec
+
+<table>
+  <th>id</th><th>Firstname</th><th>Lastname</th><th>Country</th>
+  <tr>
+   <td>1</td> <td>Jozef</td> <td>Brzdakal</td> <td>Poland</td>
+  </tr>
+</table>
+
+### account_spec
+<table>
+    <th>id</th><th>Login</th><th>Password</th><th>Person</th>
+  <tr>
+     <td>1</td><td>jbrzdakal</td> <td>pass123</td><td>1</td> 
+  </tr>
+</table>
+
+### workout_spec
+
+<table>
+  <th>id</th><th>Account</th><th>date</th><th>distance</th><th>duration</th>
+  <tr>
+   <td>1</td> <td>1</td> <td>2018-01-05</td> <td>5</td><td>00:18:30</td>
+  </tr>
+</table>
+
+### progress_spec
+
+<table>
+  <th>id</th><th>Account</th><th>Workout</th>
+  <tr>
+   <td>1</td> <td>1</td> <td>1</td>
+  </tr>
+</table>
 
 
