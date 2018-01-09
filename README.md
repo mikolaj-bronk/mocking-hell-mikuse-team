@@ -42,24 +42,24 @@ Aby uruchomić program z konsoli należy przejść do katalogu `bin` i wpisać k
 # [![Awesome](https://mmiki26.nstrefa.pl/run.PNG)](https://github.com/my-rspec/mocking-hell-mikuse-team) Mockowanie
 
 
-### person_spec
+### Person
 
 <table>
-  <th>id</th><th>Firstname</th><th>Lastname</th><th>Country</th>
+  <th>id</th><th>firstname</th><th>lastname</th><th>country</th>
   <tr>
    <td>1</td> <td>Jozef</td> <td>Brzdakal</td> <td>Poland</td>
   </tr>
 </table>
 
-### account_spec
+### Account
 <table>
-    <th>id</th><th>Login</th><th>Password</th><th>Person</th>
+    <th>id</th><th>login</th><th>password</th><th>Person</th>
   <tr>
      <td>1</td><td>jbrzdakal</td> <td>pass123</td><td>1</td> 
   </tr>
 </table>
 
-### workout_spec
+### Workout
 
 <table>
   <th>id</th><th>Account</th><th>date</th><th>distance</th><th>duration</th>
@@ -68,7 +68,7 @@ Aby uruchomić program z konsoli należy przejść do katalogu `bin` i wpisać k
   </tr>
 </table>
 
-### progress_spec
+### Progress
 
 <table>
   <th>id</th><th>Account</th><th>Workout</th>
