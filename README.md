@@ -3,7 +3,7 @@
     <img src="https://mmiki26.nstrefa.pl/studia/mikuse.PNG" alt="logo" title="mikuse_logo" align="right" height="60" />
 </a>
 
-# Sport Timer
+# [![Awesome](https://mmiki26.nstrefa.pl/run.PNG)](https://github.com/my-rspec/mocking-hell-mikuse-team) Sport Timer
 
 <table>
   <tr>
@@ -29,28 +29,14 @@
   </table>
 
 
-## Jak pobrać repo:
-`git clone git@github.com:my-rspec/mocking-hell-mikuse-team.git`
+# [![Awesome](https://mmiki26.nstrefa.pl/run.PNG)](https://github.com/my-rspec/mocking-hell-mikuse-team) O programie
 
-## Praca na branchach
-Pobranie najnowszych zmian z danego brancha:
+Sport timer to aplikacja dla biegacza lub trenera personalnego. Służy ona do przechowywania informacji o wynikach sportowców, co pozwala na późniejszą analizę postępu.
 
-`git pull origin <imie>`
+# [![Awesome](https://mmiki26.nstrefa.pl/run.PNG)](https://github.com/my-rspec/mocking-hell-mikuse-team) Uruchamianie
 
-Utworzenie nowego brancha z githuba: 
+Aby uruchomić program z konsoli należy przejść do katalogu bin i wpisać komendę:
+ 
+`ruby run`
 
-`git checkout -b <imie> origin/<imie>`
-
-Następnie przy wysłaniu kodu na serwer:
-
-`git push -u origin <imie>`
-
-Pobieranie najnowszych zmian z mastera
-
-* `git checkout master`
-* `git pull origin master`
-* `git checkout <imie>`
-* `git merge master`
-
-Po tych komendach macie najnowsze zmiany w lokalnym masterze oraz w swoim branchu
 
