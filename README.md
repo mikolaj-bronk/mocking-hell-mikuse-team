@@ -35,7 +35,7 @@ Sport timer to aplikacja dla biegacza lub trenera personalnego. Służy ona do p
 
 # [![Awesome](https://mmiki26.nstrefa.pl/run.PNG)](https://github.com/my-rspec/mocking-hell-mikuse-team) Uruchamianie
 
-Aby uruchomić program z konsoli należy przejść do katalogu bin i wpisać komendę:
+Aby uruchomić program z konsoli należy przejść do katalogu `bin` i wpisać komendę:
  
 `ruby run`
 
