@@ -3,7 +3,7 @@
     <img src="https://mmiki26.nstrefa.pl/studia/mikuse.PNG" alt="logo" title="mikuse_logo" align="right" height="60" />
 </a>
 
-# [![Awesome](https://mmiki26.nstrefa.pl/run.PNG)](https://github.com/sindresorhus/awesome) Sport Timer
+# [![Awesome](https://mmiki26.nstrefa.pl/run.PNG)](https://github.com/my-rspec/mocking-hell-mikuse-team) Sport Timer
 
 <table>
   <tr>
@@ -26,10 +26,10 @@
   
   <tr><td> <b>Test Coverage</b> </td>
   <td>  <a href="https://codeclimate.com/github/my-rspec/mocking-hell-mikuse-team/test_coverage"> <img src="https://api.codeclimate.com/v1/badges/9dbd04fdfe072b95d34b/test_coverage"></a></td></tr>
-  </table>
+  </table><br><br>
 
 
-# [![Awesome](https://mmiki26.nstrefa.pl/run.PNG)](https://github.com/sindresorhus/awesome) O programie
+# [![Awesome](https://mmiki26.nstrefa.pl/run.PNG)](https://github.com/my-rspec/mocking-hell-mikuse-team) O programie
 
 Sport timer to aplikacja dla biegacza lub trenera personalnego. Służy ona do przechowywania informacji o wynikach sportowców, co pozwala na późniejszą analizę postępu.
 
