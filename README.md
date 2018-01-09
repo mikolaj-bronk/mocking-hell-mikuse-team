@@ -39,4 +39,42 @@ Aby uruchomić program z konsoli należy przejść do katalogu `bin` i wpisać k
  
 `ruby run`
 
+# [![Awesome](https://mmiki26.nstrefa.pl/run.PNG)](https://github.com/my-rspec/mocking-hell-mikuse-team) Mockowanie
+
+
+### Person
+
+<table>
+  <th>id</th><th>firstname</th><th>lastname</th><th>country</th>
+  <tr>
+   <td>1</td> <td>Jozef</td> <td>Brzdakal</td> <td>Poland</td>
+  </tr>
+</table>
+
+### Account
+<table>
+    <th>id</th><th>login</th><th>password</th><th>Person</th>
+  <tr>
+     <td>1</td><td>jbrzdakal</td> <td>pass123</td><td>1</td> 
+  </tr>
+</table>
+
+### Workout
+
+<table>
+  <th>id</th><th>Account</th><th>date</th><th>distance</th><th>duration</th>
+  <tr>
+   <td>1</td> <td>1</td> <td>2018-01-05</td> <td>5</td><td>00:18:30</td>
+  </tr>
+</table>
+
+### Progress
+
+<table>
+  <th>id</th><th>Account</th><th>Workout</th>
+  <tr>
+   <td>1</td> <td>1</td> <td>1</td>
+  </tr>
+</table>
+
 
